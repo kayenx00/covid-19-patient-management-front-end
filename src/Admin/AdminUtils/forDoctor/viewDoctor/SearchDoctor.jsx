@@ -27,9 +27,17 @@ function SearchDoctor({details}) {
         setSearchField(e.target.value);
     }
     function searchList() {
+      if(doctors.length === 0){
         return (
+          <div>
+            
+          </div>
+        )
+      }else{
+        return (
+
             <DoctorList filteredDoctor={filterDoctors} />
-        );
+        );}
       }
     return ( 
         <div>

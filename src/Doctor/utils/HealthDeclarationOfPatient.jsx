@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import moment from 'moment';
-function List({details}) {
-    const list = details
+const moment = require('moment');
+function HealthDeclarationOfPatient({healthDeclaration}) {
+    const list = healthDeclaration
     const navigate = useNavigate();
     console.log(list);
     const handleBack = () =>{
-        const patient_id = localStorage.getItem('user_id')
-        navigate('/Patient/'+patient_id)
+        const doctor_id = localStorage.getItem('doctor_id')
+        navigate('/DoctorViewPatients/'+doctor_id)
     }
-    const handleUpdate=(id)=>{
-        navigate('/PatientUpdateHealthInfo/'+ id)
+    const handleClick=(id)=>{
+        navigate('/DoctorAddAdvice/'+ id)
     }
     return ( 
         <div>
@@ -25,7 +25,7 @@ function List({details}) {
                             <th>Other_Diagnose </th>
                             <th>Last update </th>
                             <th>Advice</th>
-                            <th></th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,13 +35,14 @@ function List({details}) {
                                 <td>{l.blood_pressure}</td>
                                 <td>{l.oxygen_level}</td>
                                 <td>{l.other_diagnose}</td>
-                                <td>{moment(l.last_update).format("YYYY-MM-DD")}</td>
+                                <td>{moment(l.last_update.lastUpdate).format("YYYY-MM-DD")}</td>
                                 <td>{l.advice}</td>
                                 <td>
-                                    <button onClick = {() => handleUpdate(l.id)}>Update</button>
+                                    <button onClick = {() => handleClick(l.id)}>Add Advice</button>
                                 </td>
+                            
                             </tr>)}
-                        <tr>
+                            <tr>
                         <td>
                             <button onClick = {()=>handleBack()}>Back</button>
                         </td>
@@ -55,4 +56,4 @@ function List({details}) {
      );
 }
 
-export default List;
+export default HealthDeclarationOfPatient;

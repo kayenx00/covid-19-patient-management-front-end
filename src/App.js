@@ -15,7 +15,7 @@ import FetchPatient from './Admin/AdminUtils/forPatient/viewPatient/FetchPatient
 import ViewAdminHomePage from './Admin/ViewAdminHomePage';
 //Doctor
 import FetchPatientUnderGuide from './Doctor/utils/viewPatientUnderGuide/FetchPatientUnderGuide';
-import makeAdvice from './Doctor/utils/makeAdvice';
+import MakeAdvice from './Doctor/utils/MakeAdvice';
 import ViewDoctorHomePage from './Doctor/utils/ViewDoctorHomePage';
 import ViewOnePatientDeclaration from './Doctor/utils/ViewOnePatientDeclaration';
 //Patient
@@ -67,15 +67,15 @@ function App() {
             {/* Doctor */}
             <Route exact path = "/Doctor/:id" element = {<ViewDoctorHomePage />}/>
             <Route exact path = "/DoctorViewPatients/:id" element = {<FetchPatientUnderGuide/>} /> 
-            <Route exact path = "/DoctorViewPatient/:id" element = {<ViewOnePatientDeclaration/>} />
-            <Route exact path = "/DoctorAddAdvice/:id" element = {<makeAdvice/>} />
+            <Route exact path = "/DoctorViewPatientDeclaration/:id" element = {<ViewOnePatientDeclaration/>} />
+            <Route exact path = "/DoctorAddAdvice/:id" element = {<MakeAdvice/>} />
             {/* Patient */}
             <Route exact path = "/Patient/:id" element = {<ViewPatientHomePage />}/>
-            <Route exact path = "/PatientUpdateInfo" element = {<UpdatePatientInformation/>} /> 
+            <Route exact path = "/PatientUpdateInfo/:id" element = {<UpdatePatientInformation/>} /> 
             <Route exact path = "/PatientViewDoctors" element = {<FetchDoctorList/>} /> 
-            <Route exact path = "/PatientViewHealthInfo" element = {<FetchList/>} />
-            <Route exact path = "/PatientAddHealthInfo" element = {<AddHealthDeclaration/>} />
-            <Route exact path = "/PatientUpdateHealthInfo" element = {<UpdateHealthDeclaration/>} />
+            <Route exact path = "/PatientViewHealthInfo/:id" element = {<FetchList/>} />
+            <Route exact path = "/PatientAddHealthInfo/:id" element = {<AddHealthDeclaration/>} />
+            <Route exact path = "/PatientUpdateHealthInfo/:id" element = {<UpdateHealthDeclaration/>} />
         
           </Route>
           <Route path = "*" element = {<NotFoundError/> } />

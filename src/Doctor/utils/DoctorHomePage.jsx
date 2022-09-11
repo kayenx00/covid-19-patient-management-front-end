@@ -6,6 +6,7 @@ function DoctorHomePage({doctorDetails}) {
     console.log(details);
     const {id, name, phone, user_id, username} = details
     const handleClick = () => {
+        localStorage.setItem('doctor_id', id)
         navigate('/DoctorViewPatients/'+id);
     }
     return ( 

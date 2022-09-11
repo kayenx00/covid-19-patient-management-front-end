@@ -63,10 +63,6 @@ await axios(config)
             {/* <button onClick={() => handleClick()}>
                 Login
             </button> */}
-            <form action=""></form>
-
-
-
           <div className="login-container">
           <div className="login-content">
             <h2 className="login-title">Login</h2>

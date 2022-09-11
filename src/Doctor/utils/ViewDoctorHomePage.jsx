@@ -9,12 +9,12 @@ import FetchingError from '../../Authentication/Views/ErrorView/FetchingError';
 function ViewDoctorHomePage() {
     const {id} = useParams();
     const token = localStorage.getItem('token');
-    const url = API + 'getDoctorById';
+    const url = API + 'getDoctorById?id=' + id;
     const fetchSongs = async () => {
         let formData = new FormData();
         formData.append('id', id);
         const fetchData = await axios({
-            method: 'put',
+            method: 'get',
             url: url,
             headers: {
                 Authorization: `Bearer ${token}`},

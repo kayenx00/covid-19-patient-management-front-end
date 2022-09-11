@@ -20,11 +20,13 @@ let navigate = useNavigate()
             }
         })
     }
-    const AddDoctor = () =>{
-        navigate('/AdminAddDoctor')
+    const handleBack=()=>{
+        const doctor_id = localStorage.getItem('user_id')
+        navigate('/Doctor/'+ doctor_id)
     }
-    const handleUpdate = (id) => {
-        navigate("/AdminUpdateDoctor/" + id)
+    const handleView = (id) => {
+        localStorage.setItem('patient_id', id)
+        navigate("/DoctorViewPatientDeclaration/" + id)
     } 
     function goToNextPage() {
 
@@ -65,9 +67,6 @@ let navigate = useNavigate()
     }
     return (
         <div>
-            <button onClick ={() => AddDoctor()}>
-                Add Doctor
-                </button>
             <div className = 'rows'>
                 <table className = "table table-striped table-bordered">
                     <thead>
@@ -98,7 +97,7 @@ let navigate = useNavigate()
                                     <td>{f.city}</td>
                                     <td>{f.district}</td>
                                     <td>
-                                        <button onClick = {() => handleUpdate(f.id)}>Update</button>
+                                        <button onClick = {() => handleView(f.id)}>View Patient Declaration</button>
                                     </td>
 
                                 </tr>
@@ -146,6 +145,11 @@ let navigate = useNavigate()
                             <td>
                             </td>
                             <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button onClick = {()=>handleBack()}>Back</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

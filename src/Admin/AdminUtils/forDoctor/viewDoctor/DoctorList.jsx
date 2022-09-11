@@ -30,9 +30,6 @@ function DoctorList({filteredDoctor}) {
     const handleUpdate = (id) => {
         navigate("/AdminUpdateDoctor/" + id)
     } 
-    const handleBack=()=>{
-        navigate('/Admin')
-    }
     function goToNextPage() {
 
         setCurrentPage((page) => page + 1);

@@ -53,11 +53,71 @@ function UpdatePatientInformation() {
             console.log('Something went wrong, please check your input')    
             });
           }
-    return ( 
-        <div>
-            
+          return(
+            <div>
+              <div className="container">
+          <div className="w-75 mx-auto shadow p-5">
+            <h2 className="text-center mb-4">Update Health Declaration</h2>
+            <form onSubmit={(e) => onSubmit(e)}>
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control form-control-lg"
+                  placeholder="Enter Your Name"
+                  name="name"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control form-control-lg"
+                  placeholder="Enter your ID Number"
+                  name="id_num"
+                  value={id_num}
+                  onChange={e => setId_Num(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control form-control-lg"
+                  placeholder="Enter Your Phone"
+                  name="phone"
+                  value={phone}
+                  onChange={e => setPhone(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control form-control-lg"
+                  placeholder="Enter Your City"
+                  name="city"
+                  value={city}
+                  onChange={e => setCity(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control form-control-lg"
+                  placeholder="Enter Your District"
+                  name="district"
+                  value={district}
+                  onChange={e => setDistrict(e.target.value)}
+                />
+              </div>
+              <span>              
+                <button type = "submit" className="btn btn-primary btn-block">Update</button>
+                <button className="btn btn-primary btn-block" onClick = {() => handleBack()}>Back</button>
+              </span>
+            </form>
+          </div>
         </div>
-    </div> );
+            </div>
+          )
 }
 
 export default UpdatePatientInformation;

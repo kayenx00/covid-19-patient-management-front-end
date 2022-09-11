@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-function makeAdvice() {
+function MakeAdvice() {
     return ( 
         <div>
             
         </div>
-    </div> );
+    );
 }
 
 export default MakeAdvice;

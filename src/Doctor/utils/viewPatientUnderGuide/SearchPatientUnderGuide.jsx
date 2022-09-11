@@ -38,9 +38,17 @@ function SearchPatientUnderGuide({details}) {
         setSearchField(e.target.value);
     }
     function searchList() {
+      if(patients.length === 0){
+        return(
+          <div>
+            <h2 className='text-center'> There are no Patients under your Guidence</h2>
+          </div>
+        )
+      }
+      else{
         return (
             <PatientUnderGuideList filteredPatients={filteredPatients} />
-        );
+        );}
       }
     return ( 
         <div>

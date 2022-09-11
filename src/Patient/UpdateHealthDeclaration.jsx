@@ -1,55 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { API } from '../api/GeneralAPI';
-import e from 'express';
 function UpdateHealthDeclaration() {
-    const [blood_pressure, setBlood_Pressure] = useState("")
-    const [oxygen_level, setOxygen_Level] = useState("")
-    const [other_diagnose, setOther_Diagnose] = useState("")
-    const {id} = useParams()
-    let navigate = useNavigate()
-    console.log(id)
-    const handleBack = () => {
-        const patient_id = localStorage.getItem('patient_id')
-        navigate('/PatientViewHealthInfo/'+ patient_id)
-    }
-    const onSubmit = async () => {
-            e.preventDefault();
-            const s = API + 'updateHealthDeclaration'
-            // const data = JSON.stringify({
-            //   "id": id,
-            //   "name": name,
-            //   "author": author,
-            //   "genre": genre
-            // });
-            const token = localStorage.getItem('token')
-            const formData = new FormData()
-            formData.append('blood_pressure', blood_pressure)
-            formData.append('oxygen_level', oxygen_level)
-            formData.append('other_diagnose', other_diagnose)
-            formData.append('id', id)
-            const config = {
-              method: 'put',
-              url: s,
-              headers: {
-                Authorization: `Bearer ${token}`
-              },
-        
-              data : formData
-            };
-            await axios(config).then(function (response) {
-              console.log(JSON.stringify(response.data));
-              const patient_id = localStorage.getItem('patient_id')
-              navigate('/PatientViewHealthInfo/'+patient_id)
-            //   window.location.reload()
-            })
-            .catch(function (error) {
-              console.log(error);
-              alert('Something went wrong, please check your input')
-            console.log('Something went wrong, please check your input')    
-            });
-          }
     return ( 
     <div>
         <div className="container">

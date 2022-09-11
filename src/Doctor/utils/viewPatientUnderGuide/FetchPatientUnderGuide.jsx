@@ -9,7 +9,8 @@ import SearchPatientUnderGuide from './SearchPatientUnderGuide';
 function FetchPatientUnderGuide() {
     const {id} = useParams();
     console.log(id)
-    const url = API + "getAllPatientsOfDoctor?id="+ id;
+    const navigate = useNavigate();
+    const url = API + "getAllPatientsOfDoctor"
     const token = localStorage.getItem('token');
     const fetchPatients = async () => {
         let formData = new FormData();

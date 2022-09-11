@@ -11,12 +11,7 @@ function SearchDoctor({details}) {
             .name
             .toLowerCase()
             .includes(searchField.toLowerCase())
-            ||
-            doctor
-            .id_num
-            .toLowerCase()
-            .includes(searchField.toLowerCase())
-            ||            
+            ||   
             doctor
             .phone
             .toLowerCase()

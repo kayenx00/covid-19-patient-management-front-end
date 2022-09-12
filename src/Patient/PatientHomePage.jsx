@@ -1,29 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import UpdateOrViewDeclaration from './utils/UpdateOrViewDeclarations/UpdateOrViewDeclaration';
+import ViewAndRegisterButton from './utils/ViewAndRegisterDoctor/ViewAndRegisterButton';
 function PatientHomePage({patientDetails}) {
     const details = patientDetails;
     const navigate = useNavigate()
     console.log(details);
     const {id, name, id_num, phone, city, district, user_id, username, chosen_doctor} = details
+    const handleClick = () => {
+        //localStorage.setItem('patient_id', user_id)
+        navigate('/PatientAddHealthInfo/'+id);
+    }
+    const handleUpdate=()=>{
+        //localStorage.setItem('patient_id', user_id)
+        navigate('/PatientUpdateInfo/'+id)
+    }
     const handleView = () => {
         localStorage.setItem('patient_id', id)
         navigate('/PatientViewHealthInfo/'+id)
     }
-    const handleAdd = () => {
-        localStorage.setItem('patient_id', id)
-        navigate('/PatientAddHealthInfo/'+id)
-
-    }
-    const handleUpdate = () => {
-        localStorage.setItem('patient_id', id)
-        navigate('/PatientUpdateInfo/'+id);
+    function RegisterOrUpdateAndView(){
+        if(chosen_doctor !==null){
+            return <UpdateOrViewDeclaration patient_id = {id}/>
+        }
+        else {
+            return <ViewAndRegisterButton />
+        }
+        
     }
     return ( 
         <div>
             <div className='rows'>
-                <h2>Patient Details</h2>
+                <h2 className='text-center'>Patient Details</h2>
                 <table className='table table-striped table-bordered'>
-                    <thead>
+                    <tbody>
+                        
                         <tr>
                             <td>ID: </td>
                             <td>{id}</td>
@@ -33,7 +44,7 @@ function PatientHomePage({patientDetails}) {
                             <td>{name}</td>
                         </tr>
                         <tr>
-                            <td>ID Number: </td>
+                            <td>ID number: </td>
                             <td>{id_num}</td>
                         </tr>
                         <tr>
@@ -60,21 +71,27 @@ function PatientHomePage({patientDetails}) {
                             <td>Chosen Doctor ID: </td>
                             <td>{chosen_doctor}</td>
                         </tr>
-                        <tr>
-                            <td><button onClick={()=>handleView()}>View Declaration</button></td>
-                            <td><button onClick={()=>handleAdd()}>Add Declaration</button></td>
-                        </tr>
-                        <tr>
-                            <td></td>
+                        {RegisterOrUpdateAndView()}
+                        {/* <tr>
                             <td>
-                                <button onClick={()=>handleUpdate()}>Update Information</button>
+                                <button onClick = {() => handleView()}>View Health Declaration</button>
                             </td>
+                            <td>
+                                <button onClick={() => handleClick()}>Add Health Declaration</button>
+                            </td>
+                        </tr> */}
+                        <tr>
+                        
+                            <td>
+                                <button onClick={() => handleUpdate()}>Update Information</button>
+                            </td>
+                            <td></td>
                         </tr>
-                    </thead>
+                    </tbody>
                 </table>
             </div>
         </div>
      );
-}
-
+    }
 export default PatientHomePage;
+

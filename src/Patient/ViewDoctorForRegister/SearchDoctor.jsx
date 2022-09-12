@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DoctorList from '../../Admin/AdminUtils/forDoctor/viewDoctor/DoctorList';
+import DoctorList from './DoctorList';
 function SearchDoctor({details}) {
     const [searchField, setSearchField] = useState("")
     const doctors = details

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { API } from '../../api/GeneralAPI';
 function DoctorList({filteredDoctors}) {
     let navigate = useNavigate()
     const filtered = filteredDoctors
@@ -14,9 +15,30 @@ function DoctorList({filteredDoctors}) {
         const doctor_id = localStorage.getItem('user_id')
         navigate('/Doctor/'+ doctor_id)
     }
-    const handleView = (id) => {
-        localStorage.setItem('patient_id', id)
-        navigate("/DoctorViewPatientDeclaration/" + id)
+    const handleRegister = async (id) => {
+        const token = localStorage.getItem('token')
+        const patient_id = localStorage.getItem('patient_id')
+        const user_id = localStorage.getItem('user_id')
+        const s = API + "registerDoctor";
+        formData.append('chosen_doctor', id);
+        formData.append('id', patient_id);
+        const config = {
+            method : 'put',
+            url : s,
+            headers: {  
+                'Authorization' : `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data'
+            },
+            data :formData
+        }
+        await axios(config).then(function(response){
+            console.log(JSON.stringify(response, data));
+            navigate('/Patient/'+ user_id)
+        }).catch(function(error){
+            console.log(error)
+            alert(error);
+            navigate('/Patient/'+user_id)
+        })
     } 
     function goToNextPage() {
 
@@ -81,7 +103,7 @@ function DoctorList({filteredDoctors}) {
                                     <td>{f.city}</td>
                                     <td>{f.district}</td>
                                     <td>
-                                        <button onClick = {() => handleView(f.id)}>View Patient Declaration</button>
+                                        <button onClick = {() => handleRegister(f.id)}>Register</button>
                                     </td>
 
                                 </tr>

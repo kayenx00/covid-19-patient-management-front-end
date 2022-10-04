@@ -44,7 +44,7 @@ function SearchDoctor({details}) {
             <input 
             className="pa3 bb br3 grow b--none bg-lightest-blue ma3"
             type = "search" 
-            placeholder = "Search Song" 
+            placeholder = "Search a Doctor" 
             onChange = {handleChange}
             />
             {searchList()}

@@ -8,7 +8,7 @@ function PatientHomePage({patientDetails}) {
     console.log(details);
     const {id, name, id_num, phone, city, district, user_id, username, chosen_doctor} = details
     const handleClick = () => {
-        //localStorage.setItem('patient_id', user_id)
+        localStorage.setItem('patient_id', id)
         navigate('/PatientAddHealthInfo/'+id);
     }
     const handleUpdate=()=>{

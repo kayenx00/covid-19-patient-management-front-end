@@ -3,10 +3,15 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import ProtectedRoutes from './Authentication/ProtectedRoutes';
-import NavBar from './Authentication/Views/NavBar/NavBar';
+import { GeneralNavBar } from './Authentication/Views/NavBar/GeneralNavBar';
+import Header from './Homepage/Header';
+import Footer from './Homepage/Footer';
+import About from './Homepage/BodyElement/About';
+// import NavBar from './Authentication/Views/NavBar/NavBar';
 import Login from './Authentication/Views/LoginView/Login';
 import Register from './Authentication/Views/RegisterView/Register';
 import NotFoundError from './Authentication/Views/ErrorView/NotFoundError';
+import HomePage from './Homepage/HomePage';
 // {Admin}
 import FetchDoctor from './Admin/AdminUtils/forDoctor/viewDoctor/FetchDoctor';
 import AddDoctor from './Admin/AdminUtils/forDoctor/AddDoctor';
@@ -27,7 +32,12 @@ import ViewPatientHomePage from './Patient/ViewPatientHomePage';
 import AddHealthDeclaration from './Patient/AddHealthDeclaration';
 function App() {
   const token = localStorage.getItem('token')
+  const user_id = localStorage.getItem('token')
   const [isLoggedin, setIsLoggedin] = useState(token ? true : false)
+  const [isPatient, setIsPatient] = useState(user_id ? true : false)
+  const [isDoctor, setIsDoctor] = useState(user_id ? true : false) 
+  const [isAdmin, setIsAdmin] = useState(user_id ? true : false)
+
   const DAY_TO_MILLISECOND = 86400000;
   if(token != null){
     const current = new Date();
@@ -49,14 +59,29 @@ function App() {
   return (
     <div>
       <Router>
-      <NavBar isAuth = {isLoggedin}
-              setIsLoggedin = {setIsLoggedin}/>
+      <Header isAuth = {isLoggedin}
+              setIsLoggedin = {setIsLoggedin}/> 
+      {/* <GeneralNavBar isAuth = {isLoggedin}
+              setIsLoggedin = {setIsLoggedin}
+              isPatient = {isPatient}
+              setIsPatient = {setIsPatient}
+              isDoctor = {isDoctor}
+              setIsDoctor = {setIsDoctor}
+              isAdmin = {isAdmin}
+              setIsAdmin = {setIsAdmin}/> */}
+      
         <Routes>
           {/* <Route exact path = "/" element = {<FetchSong />}/>
           <Route exact path = "/viewAndUpdate/:id" element = {<PlayAndViewAndUpdateSong/>} /> 
           <Route exact path = "/add/Song" element = {<AddSong/>} /> */}
-          <Route exact path = "/" element = {<Login setIsLoggedin = {setIsLoggedin}/>}/>
-          <Route exact path = "/register" element = {<Register/>}/>
+          <Route exact path ="/" element = {<HomePage />}/>
+          <Route exact path ="/about" element = {<About />}/>
+          <Route exact path = "/login" element = {<Login 
+                                                  setIsLoggedin = {setIsLoggedin}
+                                                  setIsAdmin = {setIsAdmin}
+                                                  setIsDoctor = {setIsDoctor}
+                                                  setIsPatient = {setIsPatient}/>}/>
+          <Route exact path = "/register" element = {<Register setIsLoggedin = {setIsLoggedin}/>}/>
           <Route element = {<ProtectedRoutes isLoggedin={isLoggedin}/>}>
             {/* Admin */}
             <Route exact path = "/Admin" element = {<ViewAdminHomePage />}/>
@@ -76,11 +101,12 @@ function App() {
             <Route exact path = "/PatientViewHealthInfo/:id" element = {<FetchList/>} />
             <Route exact path = "/PatientAddHealthInfo/:id" element = {<AddHealthDeclaration/>} />
             <Route exact path = "/PatientUpdateHealthInfo/:id" element = {<UpdateHealthDeclaration/>} />
-        
+            {/*HomePage*/}
           </Route>
           <Route path = "*" element = {<NotFoundError/> } />
           {/* <Route exact path = "/update/Song/:id" element = {< UpdateSongInfo/>}/> */}
         </Routes>
+        <Footer />
       </Router>
     </div>
   )

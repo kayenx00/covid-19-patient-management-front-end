@@ -51,14 +51,21 @@ function MakeAdvice() {
             <h2 className="text-center mb-4">Make your advice</h2>
             <form onSubmit={onSubmit}>
               <div className="form-group">
-                <input
+                {/* <input
                   type="text"
                   className="form-control form-control-lg"
                   placeholder="Enter Your Advice"
                   name="advice"
                   value={advice}
                   onChange={e => setAdvice(e.target.value)}
-                />
+                /> */}
+                <textarea rows = "10" cols = "50"
+                  className="form-control form-control-lg"
+                  placeholder="Enter Your Advice"
+                  name="advice"
+                  value={advice}
+                  onChange={e => setAdvice(e.target.value)}>
+                </textarea>
               </div>
               <span>              
                 <button type = "submit" className="btn btn-primary btn-block">Make Advice</button>

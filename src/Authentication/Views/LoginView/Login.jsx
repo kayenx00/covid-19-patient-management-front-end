@@ -45,12 +45,15 @@ await axios(config)
   let id = response.data.id;
   let roles = response.data.roles[0];
   if(roles === "ROLE_PATIENT"){
+    params.setIsPatient(true);
     navigate(`/Patient/${id}`)
   }
   else if(roles === "ROLE_ADMIN"){
+    params.setIsAdmin(true);
     navigate('/Admin')
   }
   else if(roles === "ROLE_DOCTOR"){
+    params.setIsDoctor(true);
     navigate(`/Doctor/${id}`)
   }
 })

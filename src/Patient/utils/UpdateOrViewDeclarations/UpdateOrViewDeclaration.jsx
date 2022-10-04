@@ -5,7 +5,7 @@ function UpdateOrViewDeclaration({patient_id}) {
     const id = patient_id;
     const navigate = useNavigate()
     const HandleClick = () => {
-        //localStorage.setItem('patient_id', user_id)
+        localStorage.setItem('patient_id', id)
         navigate('/PatientAddHealthInfo/'+id);
     }
     const HandleView = () => {

@@ -12,7 +12,7 @@ function DoctorHomePage({doctorDetails}) {
     return ( 
         <div>
             <div className='rows'>
-                <h2>Doctor Details</h2>
+                <h2 className ='text-center'>Doctor Details</h2>
                 <table className='table table-striped table-bordered'>
                     <thead>
                         <tr>

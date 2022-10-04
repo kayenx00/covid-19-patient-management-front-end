@@ -158,7 +158,14 @@ function DoctorList({filteredDoctor}) {
                             </td>
                             <td></td>
                         </tr>
+                        <tr>
+                            <td>
+                                <button onClick = {() => handleBack()}>
+                                    Back
+                                </button>
+                            </td>
 
+                        </tr>
                         {/* <tr>
                             <td>
                                 <button onClick = {() => deleteSongs(checked)}>

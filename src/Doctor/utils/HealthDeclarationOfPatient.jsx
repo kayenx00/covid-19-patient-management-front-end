@@ -22,9 +22,12 @@ function HealthDeclarationOfPatient({healthDeclaration}) {
                             <th>ID </th>
                             <th>Blood_Pressure </th>
                             <th>Oxygen_Level </th>
+                            <th>Fever</th>
+                            <th>Headache</th>
+                            <th>Muscle Pain</th>
                             <th>Other_Diagnose </th>
                             <th>Last update </th>
-                            <th>Advice</th>
+                            <th>Advice to yout Patient</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -34,6 +37,9 @@ function HealthDeclarationOfPatient({healthDeclaration}) {
                                 <td>{l.id}</td>
                                 <td>{l.blood_pressure}</td>
                                 <td>{l.oxygen_level}</td>
+                                <td>{l.fever}</td>
+                                <td>{l.headache}</td>
+                                <td>{l.muscleache}</td>
                                 <td>{l.other_diagnose}</td>
                                 <td>{moment(l.last_update.lastUpdate).format("YYYY-MM-DD")}</td>
                                 <td>{l.advice}</td>

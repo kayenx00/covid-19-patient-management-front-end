@@ -5,10 +5,16 @@ import { API } from '../api/GeneralAPI';
 function AddHealthDeclaration() {
     const [blood_pressure, setBlood_Pressure] = useState("")
     const [oxygen_level, setOxygen_Level] = useState("")
+    const [fever, setFever] = useState("")
+    const [headache, setHeadache] = useState("")
+    const [muscleache, setMuscleache] = useState("")
     const [other_diagnose, setOther_Diagnose] = useState("")
     const {id} = useParams()
     let navigate = useNavigate()
     console.log(id)
+    const handleFever = () => {
+
+    }
     const handleBack = () => {
         const patient_id = localStorage.getItem('user_id')
         navigate('/Patient/'+ patient_id)
@@ -27,6 +33,9 @@ function AddHealthDeclaration() {
             formData.append('blood_pressure', blood_pressure)
             formData.append('oxygen_level', oxygen_level)
             formData.append('other_diagnose', other_diagnose)
+            formData.append('fever', fever)
+            formData.append('headache', headache)
+            formData.append('muscleache', muscleache)
             formData.append('id', id)
             const config = {
               method: 'post',
@@ -74,6 +83,39 @@ function AddHealthDeclaration() {
                   value={oxygen_level}
                   onChange={e => setOxygen_Level(e.target.value)}
                 />
+              </div>
+              <div className="form-group">
+              <select
+                  defaultValue={fever}
+                  onChange={e => setFever(e.target.value)}
+                  className="form-control form-control-lg">
+                  <option selected value="none">none</option>
+                  <option value="high">high</option>
+                  <option value="moderate">moderate</option>
+                  <option value="ligh">light</option>
+              </select>
+              </div>
+              <div className="form-group">
+              <select
+                  defaultValue={headache}
+                  onChange={e => setHeadache(e.target.value)}
+                  className="form-control form-control-lg">
+                  <option selected value="none">none</option>
+                  <option value="high">high</option>
+                  <option value="moderate">moderate</option>
+                  <option value="ligh">light</option>
+              </select>
+              </div>
+              <div className="form-group">
+              <select
+                  defaultValue={muscleache}
+                  onChange={e => setMuscleache(e.target.value)}
+                  className="form-control form-control-lg">
+                  <option selected value="none">none</option>
+                  <option value="high">high</option>
+                  <option value="moderate">moderate</option>
+                  <option value="ligh">light</option>
+              </select>
               </div>
               <div className="form-group">
                 <input

@@ -71,7 +71,6 @@ let navigate = useNavigate()
                 <table className = "table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Select</th>
                             <th>ID</th>
                             <th>Name</th>
                             <th>ID Number</th>
@@ -85,11 +84,11 @@ let navigate = useNavigate()
                             getPaginatedData().map(f =>
                             
                                 <tr key ={f.id}>
-                                    <td>
+                                    {/* <td>
                                         <input type="checkbox" 
                                         checked = {checked.includes(f.id)} 
                                         onChange = {() => handleCheckBox(f.id)}/>
-                                    </td>
+                                    </td> */}
                                     <td>{f.id}</td>
                                     <td>{f.name}</td>
                                     <td>{f.id_num}</td>
@@ -133,7 +132,7 @@ let navigate = useNavigate()
                             </button>
                             </td>
                             <td>
-                                Set Doctor Record Limit: 
+                                Set Patient Record Limit: 
                                     <button disabled = {dataLimit === 1} onClick = {e => handleDecreaseSongLimit()}>
                                         -
                                     </button> 

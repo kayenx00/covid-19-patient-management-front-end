@@ -14,15 +14,19 @@ function List({details}) {
     }
     return ( 
         <div>
-           <table>
+            <div className='rows'>
+           <table className = "table table-striped table-bordered">
             <thead>
                 <tr>
                     <td>ID</td>
                     <td>Blood Pressure</td>
                     <td>Oxygen Level</td>
+                    <td>Fever</td>
+                    <td>Headache</td>
+                    <td>Muscle Pain</td>
                     <td>Other Diagnose</td>
                     <td>Last Update</td>
-                    <td>Advice</td>
+                    <td>Advice from your Doctor</td>
                 </tr>
             </thead>
             <tbody>
@@ -31,14 +35,17 @@ function List({details}) {
                         <td>{l.id}</td>
                         <td>{l.blood_pressure}</td>
                         <td>{l.oxygen_level}</td>
+                        <td>{l.fever}</td>
+                        <td>{l.headache}</td>
+                        <td>{l.muscleache}</td>
                         <td>{l.other_diagnose}</td>
-                        <td>{l.last_update}</td>
+                        <td>{moment(l.last_update.lastUpdate).format("YYYY-MM-DD")}</td>
                         <td>{l.advice}</td>
-                        <td>
+                        {/* <td>
                             <button onClick = {()=> handleUpdate(l.id)}>
                                 Update
                             </button>
-                        </td>
+                        </td> */}
                     </tr>)}
                     <tr>
                         <td>
@@ -49,6 +56,7 @@ function List({details}) {
                     </tr>
             </tbody>
             </table> 
+            </div>
         </div>
      );
 }

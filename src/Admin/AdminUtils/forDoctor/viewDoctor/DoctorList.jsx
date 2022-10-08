@@ -11,16 +11,16 @@ function DoctorList({filteredDoctor}) {
     const [checked, setChecked] = useState([])
     const [pages] = useState(Math.floor(numberOfDoctors / dataLimit));
     const [currentPage, setCurrentPage] = useState(1);
-    const handleCheckBox = (id) =>{
-        setChecked(prev => {
-            const isChecked = checked.includes(id);
-            if(isChecked){
-                return checked.filter(item => item !== id)
-            } else {
-                return [...prev, id]
-            }
-        })
-    }
+    // const handleCheckBox = (id) =>{
+    //     setChecked(prev => {
+    //         const isChecked = checked.includes(id);
+    //         if(isChecked){
+    //             return checked.filter(item => item !== id)
+    //         } else {
+    //             return [...prev, id]
+    //         }
+    //     })
+    // }
     const handleBack = () =>{
         navigate('/Admin')
     }
@@ -80,7 +80,6 @@ function DoctorList({filteredDoctor}) {
                 <table className = "table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Select</th>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Phone</th>
@@ -93,11 +92,11 @@ function DoctorList({filteredDoctor}) {
                             getPaginatedData().map(f =>
                             
                                 <tr key ={f.id}>
-                                    <td>
+                                    {/* <td>
                                         <input type="checkbox" 
                                         checked = {checked.includes(f.id)} 
                                         onChange = {() => handleCheckBox(f.id)}/>
-                                    </td>
+                                    </td> */}
                                     <td>{f.id}</td>
                                     <td>{f.name}</td>
                                     <td>{f.phone}</td>

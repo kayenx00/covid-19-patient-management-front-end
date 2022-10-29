@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 import ReactLoading from 'react-loading'
 import { API } from '../../api/GeneralAPI';
 import FetchingError from '../../Authentication/Views/ErrorView/FetchingError';
-import SearchDoctor from '../../Admin/AdminUtils/forDoctor/viewDoctor/SearchDoctor';
+import SearchDoctor from './SearchDoctor';
 function FetchDoctorList() {
     const url = API + "getAllDoctorsForPatient";
     const token = localStorage.getItem('token');

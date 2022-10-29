@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import { Link, Outlet } from 'react-router-dom';
 function Header(params) {
-    
+    const user_id = localStorage.getItem('user_id')
     const setLoginOrLogout = () => {
         if(params.isAuth === false){
         return (
@@ -28,6 +28,9 @@ function Header(params) {
             <Link to  ="/" class="logo"> <i class="fas fa-heartbeat"></i> medcare. </Link>
             <Link to = "/">Home</Link>
             <Link to = "/about">About</Link>
+            <Link to  = {`/Patient/${user_id}`}> Patient </Link>
+            <Link to  = {`/Doctor/${user_id}`}> Doctor </Link>
+            <Link to  = {`/Admin/`}> Admin </Link>
             {/* <Link to = "/about">Home</Link> */}
             </nav>
 
@@ -51,7 +54,8 @@ function Header(params) {
             <br />
             <br />
             <br />
-
+            <br />
+            <br />
             <Outlet />
         </div>
      );

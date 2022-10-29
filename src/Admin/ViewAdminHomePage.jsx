@@ -17,7 +17,6 @@ function ViewAdminHomePage() {
                 <button className="btn btn-primary btn-block" onClick = {() => handleDoctors()}>Doctors</button>
                 <button className="btn btn-primary btn-block" onClick = {() => handlePatients()}>Patients</button>
               </span>
-
           </div>
         </div>
         </div>

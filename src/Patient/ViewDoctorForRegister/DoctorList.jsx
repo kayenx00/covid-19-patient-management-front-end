@@ -16,10 +16,13 @@ function DoctorList({filteredDoctors}) {
         navigate('/Doctor/'+ doctor_id)
     }
     const handleRegister = async (id) => {
+        const formData = new FormData()
         const token = localStorage.getItem('token')
         const patient_id = localStorage.getItem('patient_id')
         const user_id = localStorage.getItem('user_id')
         const s = API + "registerDoctor";
+        console.log(id)
+        console.log(patient_id)
         formData.append('chosen_doctor', id);
         formData.append('id', patient_id);
         const config = {
@@ -32,7 +35,7 @@ function DoctorList({filteredDoctors}) {
             data :formData
         }
         await axios(config).then(function(response){
-            console.log(JSON.stringify(response, data));
+            console.log(JSON.stringify(response.data));
             navigate('/Patient/'+ user_id)
         }).catch(function(error){
             console.log(error)
@@ -85,10 +88,8 @@ function DoctorList({filteredDoctors}) {
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>ID Number</th>
                             <th>Phone</th>
-                            <th>City</th>
-                            <th>District</th>
+                            <th>Email</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -98,10 +99,8 @@ function DoctorList({filteredDoctors}) {
                                 <tr key ={f.id}>
                                     <td>{f.id}</td>
                                     <td>{f.name}</td>
-                                    <td>{f.id_num}</td>
                                     <td>{f.phone}</td>
-                                    <td>{f.city}</td>
-                                    <td>{f.district}</td>
+                                    <td>{f.email}</td>
                                     <td>
                                         <button onClick = {() => handleRegister(f.id)}>Register</button>
                                     </td>

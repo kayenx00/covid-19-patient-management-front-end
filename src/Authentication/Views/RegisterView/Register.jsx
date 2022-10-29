@@ -34,9 +34,8 @@ function Register(params) {
   await axios(config)
   .then(function (response) {
     const DateOfLastLogin = new Date();
-    params.setIsLoggedin(true)
     alert('Register successfully ! Go to your email to activate your account')
-    navigate('/')
+    navigate('/login')
   })
   .catch(function (error) {
     console.log(error);

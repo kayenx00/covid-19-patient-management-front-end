@@ -23,7 +23,7 @@ function SearchDoctor({details}) {
         setSearchField(e.target.value);
     }
     function searchList() {
-      if(patients.length === 0){
+      if(doctors.length === 0){
         return(
           <div>
             <h2 className='text-center'> There are no Doctors available</h2>

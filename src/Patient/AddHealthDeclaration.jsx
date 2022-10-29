@@ -5,9 +5,9 @@ import { API } from '../api/GeneralAPI';
 function AddHealthDeclaration() {
     const [blood_pressure, setBlood_Pressure] = useState("")
     const [oxygen_level, setOxygen_Level] = useState("")
-    const [fever, setFever] = useState("")
-    const [headache, setHeadache] = useState("")
-    const [muscleache, setMuscleache] = useState("")
+    const [fever, setFever] = useState("none")
+    const [headache, setHeadache] = useState("none")
+    const [muscleache, setMuscleache] = useState("none")
     const [other_diagnose, setOther_Diagnose] = useState("")
     const {id} = useParams()
     let navigate = useNavigate()
@@ -30,6 +30,9 @@ function AddHealthDeclaration() {
             // });
             const token = localStorage.getItem('token')
             const formData = new FormData()
+            console.log(fever)
+            console.log(headache)
+            console.log(muscleache)
             formData.append('blood_pressure', blood_pressure)
             formData.append('oxygen_level', oxygen_level)
             formData.append('other_diagnose', other_diagnose)
@@ -65,63 +68,70 @@ function AddHealthDeclaration() {
             <h2 className="text-center mb-4">Add Health Declaration</h2>
             <form onSubmit={(e) => onSubmit(e)}>
               <div className="form-group">
+                Your blood pressure
                 <input
                   type="text"
                   className="form-control form-control-lg"
-                  placeholder="Enter Blood Pressure"
+                  placeholder="Fill your Blood Pressure"
                   name="blood_pressure"
                   value={blood_pressure}
                   onChange={e => setBlood_Pressure(e.target.value)}
                 />
               </div>
               <div className="form-group">
+                Your Oxygen level
                 <input
                   type="text"
                   className="form-control form-control-lg"
-                  placeholder="Enter Oxygen Level"
+                  placeholder="Fill your Oxygen Level"
                   name="oxygen_level"
                   value={oxygen_level}
                   onChange={e => setOxygen_Level(e.target.value)}
                 />
               </div>
               <div className="form-group">
+                Scale Your Fever Level
               <select
                   defaultValue={fever}
                   onChange={e => setFever(e.target.value)}
                   className="form-control form-control-lg">
                   <option selected value="none">none</option>
-                  <option value="high">high</option>
-                  <option value="moderate">moderate</option>
-                  <option value="ligh">light</option>
+                  <option value="serve">serve</option>
+                  <option value="medium">medium</option>
+                  <option value="mild">mild</option>
               </select>
               </div>
               <div className="form-group">
+                Scale your headache level 
               <select
                   defaultValue={headache}
                   onChange={e => setHeadache(e.target.value)}
                   className="form-control form-control-lg">
                   <option selected value="none">none</option>
-                  <option value="high">high</option>
-                  <option value="moderate">moderate</option>
-                  <option value="ligh">light</option>
+                  <option value="serve">serve</option>
+                  <option value="medium">medium</option>
+                  <option value="mild">mild</option>
               </select>
               </div>
               <div className="form-group">
+                Scale Your Muscle pain
               <select
                   defaultValue={muscleache}
                   onChange={e => setMuscleache(e.target.value)}
                   className="form-control form-control-lg">
                   <option selected value="none">none</option>
-                  <option value="high">high</option>
-                  <option value="moderate">moderate</option>
-                  <option value="ligh">light</option>
+                  <option selected value="none">none</option>
+                  <option value="serve">serve</option>
+                  <option value="medium">medium</option>
+                  <option value="mild">mild</option>
               </select>
               </div>
               <div className="form-group">
+                Your Other Diagnose
                 <input
                   type="text"
                   className="form-control form-control-lg"
-                  placeholder="Enter Other Diagnose"
+                  placeholder="Fill if tou have any other diagnose"
                   name="other_diagnose"
                   value={other_diagnose}
                   onChange={e => setOther_Diagnose(e.target.value)}

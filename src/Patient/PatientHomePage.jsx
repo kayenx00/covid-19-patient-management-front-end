@@ -24,7 +24,7 @@ function PatientHomePage({patientDetails}) {
             return <UpdateOrViewDeclaration patient_id = {id}/>
         }
         else {
-            return <ViewAndRegisterButton />
+            return <ViewAndRegisterButton patient_id={id}/>
         }
         
     }

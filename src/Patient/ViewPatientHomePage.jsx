@@ -29,7 +29,7 @@ function ViewPatientHomePage() {
         ? <ReactLoading type="spin" color="#0000FF"
         height={100} width={50}/>
         : query.isError
-        ? <FetchingError />
+        ? <FetchingError roles = {"Patient"}/>
         : query.data
         ? <div>
             <PatientHomePage patientDetails = {query.data.data.object} />

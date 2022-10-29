@@ -26,7 +26,7 @@ function FetchDoctor() {
         ? <ReactLoading type="spin" color="#0000FF"
         height={100} width={50}/>
         : query.isError
-        ? <FetchingError />
+        ? <FetchingError roles = {"Admin"}/>
         : query.data
         ? <div>
             <SearchDoctor details = {query.data.data.object} />

@@ -4,11 +4,13 @@ import { useNavigate, Link} from 'react-router-dom';
 import { API } from '../../../../api/GeneralAPI';
 
 
-function List({filteredNurse}) {
+function List({filteredNurse, doctor}) {
     let navigate = useNavigate()
+    const doctor_id = doctor;
     const token = localStorage.getItem('token')
     const filtered = filteredNurse
     console.log(filtered)
+    console.log(doctor_id)
     const [dataLimit, setDataLimit] = useState(12)
     const numberOfNurses = filtered.length
     const pageLimit = Math.ceil(numberOfNurses/dataLimit)
@@ -26,14 +28,8 @@ function List({filteredNurse}) {
         })
     }
     const handleBack = () =>{
-        navigate('/Admin')
+        navigate('/AdminViewDoctors')
     }
-    const AddNurse = () =>{
-        navigate('/AdminAddNurse')
-    }
-    const handleUpdate = (id) => {
-        navigate("/AdminUpdateNurse/" + id)
-    } 
     function goToNextPage() {
 
         setCurrentPage((page) => page + 1);
@@ -72,12 +68,13 @@ function List({filteredNurse}) {
     const handleIncreaseSongLimit = () => {
         setDataLimit( prevState => prevState + 1)
     }
-    const handleCancel = () => {
-        const s = API + 'cancelAssignNurses'
+    const handleAssign = () => {
+        const s = API + 'assignNurses'
         const formData = new FormData();
         for(let i = 0; i < checked.length; i++){
             formData.append("id", checked[i])
         }
+        formData.append("doctor_id", doctor_id)
         const config = {
             method: 'put',
             url: s,
@@ -100,9 +97,6 @@ function List({filteredNurse}) {
     }
     return (
         <div>
-            <button onClick ={() => AddNurse()}>
-                Add Nurse
-                </button>
             {/* <button onClick ={() => handleLogout()}>
                 Log out 
                 </button> */}
@@ -133,14 +127,6 @@ function List({filteredNurse}) {
                                     <td>{f.user_id}</td>
                                     <td>{f.username}</td>
                                     <td>{f.work_under_doctor}</td>
-                                    <td>
-{/* 
-                                        <button onClick={() => goToDetail(f.id)}>
-                                            View
-                                        </button> */}
-                                        <button onClick = {() => handleUpdate(f.id)}>Update</button>
-                                    </td>
-
                                 </tr>
                                 
                             )
@@ -191,8 +177,8 @@ function List({filteredNurse}) {
                                 </button>
                             </td>
                             <td>
-                                <button onClick = {() => handleCancel()}>
-                                    Cancel Current Doctor Assignment 
+                                <button onClick = {() => handleAssign()}>
+                                    Assign
                                 </button>
                             </td>
                         </tr>

@@ -4,7 +4,7 @@ function PatientUnderGuideList({filteredPatients}) {
 let navigate = useNavigate()
     const filtered = filteredPatients
     console.log(filtered)
-    const [dataLimit, setDataLimit] = useState(6)
+    const [dataLimit, setDataLimit] = useState(12)
     const numberOfPatients = filtered.length
     const pageLimit = Math.ceil(numberOfPatients/dataLimit)
     const [checked, setChecked] = useState([])

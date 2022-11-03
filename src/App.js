@@ -21,8 +21,11 @@ import ViewAdminHomePage from './Admin/ViewAdminHomePage';
 import FetchNurse from './Admin/AdminUtils/forNurse/viewNurse/Fetch';
 import UpdateNurse from './Admin/AdminUtils/forNurse/UpdateNurse';
 import FetchNurseOfDoctor from './Admin/AdminUtils/forNurse/viewNurseOfOneDoctor/Fetch';
+import FetchNursesForAssign from './Admin/AdminUtils/forDoctor/viewNurseForAssign/Fetch';
+import AddNurse from './Admin/AdminUtils/forNurse/AddNurse';
 //Doctor
 import FetchPatientUnderGuide from './Doctor/utils/viewPatientUnderGuide/FetchPatientUnderGuide';
+
 import MakeAdvice from './Doctor/utils/MakeAdvice';
 import ViewDoctorHomePage from './Doctor/utils/ViewDoctorHomePage';
 import ViewOnePatientDeclaration from './Doctor/utils/ViewOnePatientDeclaration';
@@ -108,7 +111,8 @@ function App() {
             <Route exact path = "/AdminViewDoctorNurses/:id" element = {<FetchNurseOfDoctor/>} />
             <Route exact path = "/AdminViewNurses" element = {<FetchNurse/>} />
             <Route exact path = "/AdminUpdateNurse/:id" element = {<UpdateNurse/>} />
-            <Route exact path = "/AdminAddNurse" element = {<AddDoctor/>} />
+            <Route exact path = "/AdminAddNurse" element = {<AddNurse/>} />
+            <Route exact path = "/AdminViewNursesForAssignment/:id" element = {<FetchNursesForAssign/>} />
             {/* Doctor */}
             <Route exact path = "/Doctor/:id" element = {<ViewDoctorHomePage />}/>
             <Route exact path = "/DoctorViewPatients/:id" element = {<FetchPatientUnderGuide/>} /> 

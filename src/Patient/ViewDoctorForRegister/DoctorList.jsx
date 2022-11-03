@@ -6,7 +6,7 @@ function DoctorList({filteredDoctors}) {
     let navigate = useNavigate()
     const filtered = filteredDoctors
     console.log(filtered)
-    const [dataLimit, setDataLimit] = useState(6)
+    const [dataLimit, setDataLimit] = useState(12)
     const numberOfDoctors = filtered.length
     const pageLimit = Math.ceil(numberOfDoctors/dataLimit)
     const [pages] = useState(Math.floor(numberOfDoctors / dataLimit));

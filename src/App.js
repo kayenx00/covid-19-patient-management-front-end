@@ -18,6 +18,9 @@ import AddDoctor from './Admin/AdminUtils/forDoctor/AddDoctor';
 import UpdateDoctor from './Admin/AdminUtils/forDoctor/UpdateDoctor';
 import FetchPatient from './Admin/AdminUtils/forPatient/viewPatient/FetchPatient';
 import ViewAdminHomePage from './Admin/ViewAdminHomePage';
+import FetchNurse from './Admin/AdminUtils/forNurse/viewNurse/Fetch';
+import UpdateNurse from './Admin/AdminUtils/forNurse/UpdateNurse';
+import FetchNurseOfDoctor from './Admin/AdminUtils/forNurse/viewNurseOfOneDoctor/Fetch';
 //Doctor
 import FetchPatientUnderGuide from './Doctor/utils/viewPatientUnderGuide/FetchPatientUnderGuide';
 import MakeAdvice from './Doctor/utils/MakeAdvice';
@@ -102,6 +105,10 @@ function App() {
             <Route exact path = "/AdminviewPatients" element = {<FetchPatient/>} />
             <Route exact path = "/AdminUpdateDoctor/:id" element = {<UpdateDoctor/>} />
             <Route exact path = "/AdminAddDoctor" element = {<AddDoctor/>} />
+            <Route exact path = "/AdminViewDoctorNurses/:id" element = {<FetchNurseOfDoctor/>} />
+            <Route exact path = "/AdminViewNurses" element = {<FetchNurse/>} />
+            <Route exact path = "/AdminUpdateNurse/:id" element = {<UpdateNurse/>} />
+            <Route exact path = "/AdminAddNurse" element = {<AddDoctor/>} />
             {/* Doctor */}
             <Route exact path = "/Doctor/:id" element = {<ViewDoctorHomePage />}/>
             <Route exact path = "/DoctorViewPatients/:id" element = {<FetchPatientUnderGuide/>} /> 
@@ -110,6 +117,7 @@ function App() {
             <Route exact path = "/DoctorViewRequestAppointment" element = {<FetchRequestAppointment/>} />
             <Route exact path = "/DoctorViewUpcomingAppointment" element = {<FetchUpcomingAppointmentsForDoctor/>} />
             <Route exact path = "/DoctorInitiateAppointment" element = {<InitiateAppointment/>} />
+            <Route exact path = "/DoctorViewNurses" element = {<InitiateAppointment/>} />
             {/* Nurse */}
             <Route exact path = "/Nurse/:id" element = {<ViewNurseHomePage />}/>
             <Route exact path = "/NurseViewPatients/:id" element = {<FetchPatientForNurse />}/>

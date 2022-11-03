@@ -1,34 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useNavigate, Link} from 'react-router-dom';
-function DoctorList({filteredDoctor}) {
+import { API } from '../../../../api/GeneralAPI';
+
+
+function List({filteredNurse}) {
     let navigate = useNavigate()
     const token = localStorage.getItem('token')
-    const filtered = filteredDoctor
+    const filtered = filteredNurse
     console.log(filtered)
     const [dataLimit, setDataLimit] = useState(6)
-    const numberOfDoctors = filtered.length
-    const pageLimit = Math.ceil(numberOfDoctors/dataLimit)
+    const numberOfNurses = filtered.length
+    const pageLimit = Math.ceil(numberOfNurses/dataLimit)
     const [checked, setChecked] = useState([])
-    const [pages] = useState(Math.floor(numberOfDoctors / dataLimit));
+    const [pages] = useState(Math.floor(numberOfNurses / dataLimit));
     const [currentPage, setCurrentPage] = useState(1);
-    // const handleCheckBox = (id) =>{
-    //     setChecked(prev => {
-    //         const isChecked = checked.includes(id);
-    //         if(isChecked){
-    //             return checked.filter(item => item !== id)
-    //         } else {
-    //             return [...prev, id]
-    //         }
-    //     })
-    // }
+    const handleCheckBox = (id) =>{
+        setChecked(prev => {
+            const isChecked = checked.includes(id);
+            if(isChecked){
+                return checked.filter(item => item !== id)
+            } else {
+                return [...prev, id]
+            }
+        })
+    }
     const handleBack = () =>{
         navigate('/Admin')
     }
-    const AddDoctor = () =>{
-        navigate('/AdminAddDoctor')
+    const AddNurse = () =>{
+        navigate('/AdminAddNurse')
     }
     const handleUpdate = (id) => {
-        navigate("/AdminUpdateDoctor/" + id)
+        navigate("/AdminUpdateNurse/" + id)
     } 
     function goToNextPage() {
 
@@ -36,7 +40,7 @@ function DoctorList({filteredDoctor}) {
 
      }
    
-     function goToPreviousPage() {
+    function goToPreviousPage() {
 
         setCurrentPage((page) => page - 1);
 
@@ -68,17 +72,36 @@ function DoctorList({filteredDoctor}) {
     const handleIncreaseSongLimit = () => {
         setDataLimit( prevState => prevState + 1)
     }
+    const handleCancel = () => {
+        const s = API + 'cancelAssignNurses'
+        const formData = new FormData();
+        for(let i = 0; i < checked.length; i++){
+            formData.append("id", checked[i])
+        }
+        const config = {
+            method: 'put',
+            url: s,
+            headers: { 
+            //   'Content-Type': 'application/json', 
+              Authorization: `Bearer ${token}`
 
-    const handleView = (id) =>{
-        navigate('/AdminViewDoctorNurses/'+id)
-    }
-    const handleAssign = (id) => {
-        navigate('/AdminViewNursesForAssignment/'+id)
+            },
+            data : formData
+          };
+          axios(config).then(function (response) {
+            console.log(JSON.stringify(response.data));
+            // navigate('/')
+            window.location.reload()
+          })
+          .catch(function (error) {
+            console.log(error);
+            alert('Something went wrong, please check your input')
+          });
     }
     return (
         <div>
-            <button onClick ={() => AddDoctor()}>
-                Add Doctor
+            <button onClick ={() => AddNurse()}>
+                Add Nurse
                 </button>
             {/* <button onClick ={() => handleLogout()}>
                 Log out 
@@ -87,12 +110,12 @@ function DoctorList({filteredDoctor}) {
                 <table className = "table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th></th>
                             <th>Name</th>
                             <th>Phone</th>
                             <th>User_ID</th>
                             <th>Username</th>
-                            <th>Action</th>
+                            <th>Work Under Doctor</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -100,26 +123,22 @@ function DoctorList({filteredDoctor}) {
                             getPaginatedData().map(f =>
                             
                                 <tr key ={f.id}>
-                                    {/* <td>
+                                    <td>
                                         <input type="checkbox" 
                                         checked = {checked.includes(f.id)} 
                                         onChange = {() => handleCheckBox(f.id)}/>
-                                    </td> */}
-                                    <td>{f.id}</td>
+                                    </td>
                                     <td>{f.name}</td>
                                     <td>{f.phone}</td>
                                     <td>{f.user_id}</td>
                                     <td>{f.username}</td>
+                                    <td>{f.work_under_doctor}</td>
                                     <td>
 {/* 
                                         <button onClick={() => goToDetail(f.id)}>
                                             View
                                         </button> */}
                                         <button onClick = {() => handleUpdate(f.id)}>Update</button>
-                                        <br />
-                                        <button onClick = {() => handleView(f.id)}>View Doctor Nurses</button>
-                                        <br />
-                                        <button onClick = {() => handleAssign(f.id)}>Assign Nurses</button>
                                     </td>
 
                                 </tr>
@@ -129,7 +148,7 @@ function DoctorList({filteredDoctor}) {
 
                         <tr>
                             <td>
-                                Number of result Doctor: {numberOfDoctors}
+                                Number of result Nurse: {numberOfNurses}
                             </td>
                             <td>
                             <button
@@ -153,20 +172,17 @@ function DoctorList({filteredDoctor}) {
                             className={`next ${currentPage === pages ? 'disabled' : ''}`}>
                                 Next
                             </button>
-                            </td>
-                            <td>
-                                Set Doctor Record Limit: 
+                            <br />
+                            <br />
+                            Set Nurse Record Limit: 
                                     <button disabled = {dataLimit === 1} onClick = {e => handleDecreaseSongLimit()}>
                                         -
                                     </button> 
                                     {dataLimit}
-                                    <button disabled = {dataLimit === numberOfDoctors} onClick = {e => handleIncreaseSongLimit()}>
+                                    <button disabled = {dataLimit === numberOfNurses} onClick = {e => handleIncreaseSongLimit()}>
                                         +
-                                    </button> 
+                            </button> 
                             </td>
-                            <td>
-                            </td>
-                            <td></td>
                         </tr>
                         <tr>
                             <td>
@@ -174,7 +190,11 @@ function DoctorList({filteredDoctor}) {
                                     Back
                                 </button>
                             </td>
-
+                            <td>
+                                <button onClick = {() => handleCancel()}>
+                                    Cancel Current Doctor Assignment 
+                                </button>
+                            </td>
                         </tr>
                         {/* <tr>
                             <td>
@@ -190,4 +210,4 @@ function DoctorList({filteredDoctor}) {
     )
 }
 
-export default DoctorList;
+export default List;

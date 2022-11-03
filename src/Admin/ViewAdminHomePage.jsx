@@ -8,6 +8,9 @@ function ViewAdminHomePage() {
     const handlePatients=()=>{
         
     }
+    const handleNurses=()=>{
+      navigate('/AdminViewNurses')
+    }
     return ( 
         <div>
         <div className="container">
@@ -15,6 +18,7 @@ function ViewAdminHomePage() {
             <h2 className="text-center mb-4">Admin Action</h2>
               <span>              
                 <button className="btn btn-primary btn-block" onClick = {() => handleDoctors()}>Doctors</button>
+                <button className="btn btn-primary btn-block" onClick = {() => handleNurses()}>Nurses</button>
                 <button className="btn btn-primary btn-block" onClick = {() => handlePatients()}>Patients</button>
               </span>
           </div>

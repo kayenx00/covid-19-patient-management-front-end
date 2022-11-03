@@ -19,6 +19,9 @@ function DoctorHomePage({doctorDetails}) {
     const handleInitiate = () => {
         navigate('/DoctorInitiateAppointment');
     }
+    const handleView = () => {
+        navigate('/DoctorViewNurses');
+    }
     return ( 
         <div>
             <div className='rows'>
@@ -60,6 +63,9 @@ function DoctorHomePage({doctorDetails}) {
                             <td>
                                 <button onClick={handleClick}>View Patients</button>
                             </td>
+                        </tr>
+                        <tr>
+                            <button onClick={handleView}>View Nurses</button>
                         </tr>
                     </thead>
                 </table>

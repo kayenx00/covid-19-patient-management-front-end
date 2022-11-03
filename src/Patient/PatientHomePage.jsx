@@ -7,6 +7,8 @@ function PatientHomePage({patientDetails}) {
     const navigate = useNavigate()
     console.log(details);
     const {id, name, id_num, phone, city, district, user_id, username, chosen_doctor} = details
+    // localStorage.setItem('doctor_id', chosen_doctor);
+    localStorage.setItem('patient_id', id);
     const handleClick = () => {
         localStorage.setItem('patient_id', id)
         navigate('/PatientAddHealthInfo/'+id);
@@ -20,7 +22,7 @@ function PatientHomePage({patientDetails}) {
         navigate('/PatientViewHealthInfo/'+id)
     }
     function RegisterOrUpdateAndView(){
-        if(chosen_doctor !==null){
+        if(chosen_doctor !== null){
             return <UpdateOrViewDeclaration patient_id = {id}/>
         }
         else {
@@ -71,7 +73,6 @@ function PatientHomePage({patientDetails}) {
                             <td>Chosen Doctor ID: </td>
                             <td>{chosen_doctor}</td>
                         </tr>
-                        {RegisterOrUpdateAndView()}
                         {/* <tr>
                             <td>
                                 <button onClick = {() => handleView()}>View Health Declaration</button>
@@ -87,6 +88,7 @@ function PatientHomePage({patientDetails}) {
                             </td>
                             <td></td>
                         </tr>
+                        {RegisterOrUpdateAndView()}
                     </tbody>
                 </table>
             </div>

@@ -2,23 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { API } from '../api/GeneralAPI';
-function AddHealthDeclaration() {
+function NurseAddHealthDeclaration() {
     const [blood_pressure, setBlood_Pressure] = useState("")
     const [oxygen_level, setOxygen_Level] = useState("")
     const [fever, setFever] = useState("none")
     const [headache, setHeadache] = useState("none")
     const [muscleache, setMuscleache] = useState("none")
     const [other_diagnose, setOther_Diagnose] = useState("")
+    const [comment, setComment] = useState("")
     const {id} = useParams()
     let navigate = useNavigate()
     console.log(id)
     const handleBack = () => {
-        const patient_id = localStorage.getItem('user_id')
-        navigate('/Patient/'+ patient_id)
+        navigate('/NurseViewPatientDeclaration/'+ id)
     }
     const onSubmit = async (e) => {
             e.preventDefault();
-            const s = API + 'addHealthDeclaration'
+            const s = API + 'nurseAddHealthDeclaration'
             // const data = JSON.stringify({
             //   "id": id,
             //   "name": name,
@@ -26,6 +26,7 @@ function AddHealthDeclaration() {
             //   "genre": genre
             // });
             const token = localStorage.getItem('token')
+            const nurse_id = localStorage.getItem('nurse_id')
             const formData = new FormData()
             console.log(fever)
             console.log(headache)
@@ -37,6 +38,8 @@ function AddHealthDeclaration() {
             formData.append('headache', headache)
             formData.append('muscleache', muscleache)
             formData.append('id', id)
+            formData.append('nurse_id', nurse_id)
+            formData.append('comment_from_nurse', comment)
             const config = {
               method: 'post',
               url: s,
@@ -48,9 +51,7 @@ function AddHealthDeclaration() {
             };
             await axios(config).then(function (response) {
               console.log(JSON.stringify(response.data));
-              const patient_id = localStorage.getItem('patient_id')
-              navigate('/PatientViewHealthInfo/'+patient_id)
-            //   window.location.reload()
+              window.location.reload()
             })
             .catch(function (error) {   
               console.log(error);
@@ -65,29 +66,29 @@ function AddHealthDeclaration() {
             <h2 className="text-center mb-4">Add Health Declaration</h2>
             <form onSubmit={(e) => onSubmit(e)}>
               <div className="form-group">
-                Your blood pressure
+                Patient's blood pressure
                 <input
                   type="text"
                   className="form-control form-control-lg"
-                  placeholder="Fill your Blood Pressure"
+                  placeholder="Fill Blood Pressure"
                   name="blood_pressure"
                   value={blood_pressure}
                   onChange={e => setBlood_Pressure(e.target.value)}
                 />
               </div>
               <div className="form-group">
-                Your Oxygen level
+              Patient's Oxygen level
                 <input
                   type="text"
                   className="form-control form-control-lg"
-                  placeholder="Fill your Oxygen Level"
+                  placeholder="Fill Oxygen Level"
                   name="oxygen_level"
                   value={oxygen_level}
                   onChange={e => setOxygen_Level(e.target.value)}
                 />
               </div>
               <div className="form-group">
-                Scale Your Fever Level
+                Patient's Fever Level
               <select
                   defaultValue={fever}
                   onChange={e => setFever(e.target.value)}
@@ -99,7 +100,7 @@ function AddHealthDeclaration() {
               </select>
               </div>
               <div className="form-group">
-                Scale your headache level 
+                Patient's headache level 
               <select
                   defaultValue={headache}
                   onChange={e => setHeadache(e.target.value)}
@@ -111,7 +112,7 @@ function AddHealthDeclaration() {
               </select>
               </div>
               <div className="form-group">
-                Scale Your Muscle pain
+                Patient's Muscle pain level
               <select
                   defaultValue={muscleache}
                   onChange={e => setMuscleache(e.target.value)}
@@ -124,7 +125,7 @@ function AddHealthDeclaration() {
               </select>
               </div>
               <div className="form-group">
-                Your Other Diagnose
+                Patient's Other Diagnose
                 <input
                   type="text"
                   className="form-control form-control-lg"
@@ -134,6 +135,16 @@ function AddHealthDeclaration() {
                   onChange={e => setOther_Diagnose(e.target.value)}
                 />
               </div>
+                <div className = "form-group">
+                Your comment
+                <textarea rows = "5" cols = "50"
+                  className="form-control form-control-lg"
+                  placeholder="Enter Your comment"
+                  name="advice"
+                  value={comment}
+                  onChange={e => setComment(e.target.value)}>
+                </textarea>
+                </div>
               <span>              
                 <button type = "submit" className="btn btn-primary btn-block">Add</button>
                 <button className="btn btn-primary btn-block" onClick = {() => handleBack()}>Back</button>
@@ -144,4 +155,4 @@ function AddHealthDeclaration() {
     </div> );
 }
 
-export default AddHealthDeclaration;
+export default NurseAddHealthDeclaration;

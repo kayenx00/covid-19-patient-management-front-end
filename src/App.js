@@ -23,6 +23,14 @@ import FetchPatientUnderGuide from './Doctor/utils/viewPatientUnderGuide/FetchPa
 import MakeAdvice from './Doctor/utils/MakeAdvice';
 import ViewDoctorHomePage from './Doctor/utils/ViewDoctorHomePage';
 import ViewOnePatientDeclaration from './Doctor/utils/ViewOnePatientDeclaration';
+import FetchRequestAppointment from './Doctor/utils/appointments/ViewRequestAppointments/Fetch';
+import FetchUpcomingAppointmentsForDoctor from './Doctor/utils/appointments/ViewUpcommingAppointments/Fetch';
+import InitiateAppointment from './Doctor/utils/appointments/InitiateAnAppointment';
+//Nurse
+import ViewNurseHomePage from './Nurse/Homepage/FetchNurseInfo';
+import FetchPatientForNurse from './Nurse/ViewPatient/Fetch';
+import NurseViewOnePatientDeclaration from './Nurse/ViewPatientDeclaration/Fetch';
+import NurseAddHealthDeclaration from './Nurse/AddHealthDeclaration';
 //Patient
 import FetchDoctorList from './Patient/ViewDoctorForRegister/FetchDoctorList';
 import FetchList from './Patient/ViewPatientDeclaration/FetchList';
@@ -30,12 +38,16 @@ import UpdateHealthDeclaration from './Patient/UpdateHealthDeclaration';
 import UpdatePatientInformation from './Patient/UpdatePatientInformation';
 import ViewPatientHomePage from './Patient/ViewPatientHomePage';
 import AddHealthDeclaration from './Patient/AddHealthDeclaration';
+import FetchInitiatedAppointment from './Patient/PatientAppointments/ViewInitiatedAppointment/Fetch';
+import FetchUpcomingAppointmentsForPatient from './Patient/PatientAppointments/ViewUpcomingAppointment/Fetch';
+import RequestAppointment from './Patient/PatientAppointments/RequestAppointment';
 function App() {
   const token = localStorage.getItem('token')
   const user_id = localStorage.getItem('token')
   const [isLoggedin, setIsLoggedin] = useState(token ? true : false)
   const [isPatient, setIsPatient] = useState(user_id ? true : false)
-  const [isDoctor, setIsDoctor] = useState(user_id ? true : false) 
+  const [isNurse, setIsNurse] = useState(user_id ? true : false)
+  const [isDoctor, setIsDoctor] = useState(user_id ? true : false)
   const [isAdmin, setIsAdmin] = useState(user_id ? true : false)
 
   const DAY_TO_MILLISECOND = 86400000;
@@ -80,7 +92,8 @@ function App() {
                                                   setIsLoggedin = {setIsLoggedin}
                                                   setIsAdmin = {setIsAdmin}
                                                   setIsDoctor = {setIsDoctor}
-                                                  setIsPatient = {setIsPatient}/>}/>
+                                                  setIsPatient = {setIsPatient}
+                                                  setIsNurse = {setIsNurse}/>}/>
           <Route exact path = "/register" element = {<Register setIsLoggedin = {setIsLoggedin}/>}/>
           <Route element = {<ProtectedRoutes isLoggedin={isLoggedin}/>}>
             {/* Admin */}
@@ -94,6 +107,14 @@ function App() {
             <Route exact path = "/DoctorViewPatients/:id" element = {<FetchPatientUnderGuide/>} /> 
             <Route exact path = "/DoctorViewPatientDeclaration/:id" element = {<ViewOnePatientDeclaration/>} />
             <Route exact path = "/DoctorAddAdvice/:id" element = {<MakeAdvice/>} />
+            <Route exact path = "/DoctorViewRequestAppointment" element = {<FetchRequestAppointment/>} />
+            <Route exact path = "/DoctorViewUpcomingAppointment" element = {<FetchUpcomingAppointmentsForDoctor/>} />
+            <Route exact path = "/DoctorInitiateAppointment" element = {<InitiateAppointment/>} />
+            {/* Nurse */}
+            <Route exact path = "/Nurse/:id" element = {<ViewNurseHomePage />}/>
+            <Route exact path = "/NurseViewPatients/:id" element = {<FetchPatientForNurse />}/>
+            <Route exact path = "/NurseViewPatientDeclaration/:id" element = {<NurseViewOnePatientDeclaration />}/>
+            <Route exact path = "/NurseAddHealthDeclaration/:id" element = {<NurseAddHealthDeclaration />}/>
             {/* Patient */}
             <Route exact path = "/Patient/:id" element = {<ViewPatientHomePage />}/>
             <Route exact path = "/PatientUpdateInfo/:id" element = {<UpdatePatientInformation/>} /> 
@@ -101,6 +122,9 @@ function App() {
             <Route exact path = "/PatientViewHealthInfo/:id" element = {<FetchList/>} />
             <Route exact path = "/PatientAddHealthInfo/:id" element = {<AddHealthDeclaration/>} />
             <Route exact path = "/PatientUpdateHealthInfo/:id" element = {<UpdateHealthDeclaration/>} />
+            <Route exact path = "/PatientViewInitiatedAppointment" element = {<FetchInitiatedAppointment/>} />
+            <Route exact path = "/PatientViewUpcomingAppointment" element = {<FetchUpcomingAppointmentsForPatient/>} />
+            <Route exact path = "/PatientRequestAppointment" element = {<RequestAppointment/>} />
             {/*HomePage*/}
           </Route>
           <Route path = "*" element = {<NotFoundError/> } />

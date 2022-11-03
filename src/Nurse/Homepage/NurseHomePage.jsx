@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-function DoctorHomePage({doctorDetails}) {
-    const details = doctorDetails;
+function NurseHomePage({nurseDetails}) {
+    const details = nurseDetails;
     const navigate = useNavigate()
     console.log(details);
-    const {id, name, phone, user_id, username} = details
-    localStorage.setItem('doctor_id', id)
+    const {id, name, phone, email, user_id, username, work_under_doctor} = details
+    localStorage.setItem('nurse_id', id)
     const handleClick = () => {
-        localStorage.setItem('doctor_id', id)
-        navigate('/DoctorViewPatients/'+id);
-    }
-    const handleViewRequestAppointment = () => {
-        navigate('/DoctorViewRequestAppointment/');
-    }
-    const handleViewUpcomingAppointment = () => {
-        navigate('/DoctorViewUpcomingAppointment/');
-    }
-    const handleInitiate = () => {
-        navigate('/DoctorInitiateAppointment');
-    }
+        localStorage.setItem('nurse_id', id)
+        navigate('/NurseViewPatients/'+id);
+    }   
+    // const handleViewRequestAppointment = () => {
+    //     navigate('/DoctorViewRequestAppointment/');
+    // }
+    // const handleViewUpcomingAppointment = () => {
+    //     navigate('/DoctorViewUpcomingAppointment/');
+    // }
+    // const handleInitiate = () => {
+    //     navigate('/DoctorInitiateAppointment');
+    // }
     return ( 
         <div>
             <div className='rows'>
-                <h2 className ='text-center'>Doctor Details</h2>
+                <h2 className ='text-center'>Nurse Details</h2>
                 <table className='table table-striped table-bordered'>
                     <thead>
                         <tr>
@@ -32,6 +32,10 @@ function DoctorHomePage({doctorDetails}) {
                         <tr>
                             <td>name: </td>
                             <td>{name}</td>
+                        </tr>
+                        <tr>
+                            <td>Email: </td>
+                            <td>{email}</td>
                         </tr>
                         <tr>
                             <td>Phone: </td>
@@ -46,16 +50,11 @@ function DoctorHomePage({doctorDetails}) {
                             <td>{username}</td>
                         </tr>
                         <tr>
-                            <td>
-                                <button onClick={handleViewUpcomingAppointment}>View Upcoming Appointments</button>
-                            </td>
-                            <td>
-                                <button onClick={handleViewRequestAppointment}>View Request Appointments</button>
-                            </td>
+                            <td>Work under Doctor: </td>
+                            <td>{work_under_doctor}</td>
                         </tr>
                         <tr>
                             <td>
-                                <button onClick={handleInitiate}>Initiate A Appointment</button>
                             </td>
                             <td>
                                 <button onClick={handleClick}>View Patients</button>
@@ -68,4 +67,4 @@ function DoctorHomePage({doctorDetails}) {
      );
 }
 
-export default DoctorHomePage;
+export default NurseHomePage;

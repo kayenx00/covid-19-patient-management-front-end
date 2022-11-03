@@ -56,6 +56,10 @@ await axios(config)
     params.setIsDoctor(true);
     navigate(`/Doctor/${id}`)
   }
+  else if(roles === "ROLE_NURSE"){
+    params.setIsNurse(true);
+    navigate(`/Nurse/${id}`)
+  }
 })
 .catch(function (error) {
   console.log(error);

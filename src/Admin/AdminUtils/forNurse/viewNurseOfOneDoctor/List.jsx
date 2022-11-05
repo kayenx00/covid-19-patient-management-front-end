@@ -9,7 +9,7 @@ function List({details}) {
         const [checked, setChecked] = useState([])
         const token = localStorage.getItem('token')
         const handleBack = () =>{
-            navigate('/AdminViewDoctors/')
+            navigate('/MedicalStaffViewDoctors/')
         }
         console.log(checked.length)
         console.log(list);

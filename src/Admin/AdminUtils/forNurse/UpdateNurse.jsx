@@ -9,7 +9,7 @@ function UpdateNurse() {
     let navigate = useNavigate()
     console.log(id)
     const handleBack = () => {
-        navigate('/AdminViewNurses')
+        navigate('/MedicalStaffViewNurses')
     }
     const onSubmit = async () => {
             const s = API + 'updateNurse'
@@ -35,7 +35,7 @@ function UpdateNurse() {
             };
             await axios(config).then(function (response) {
               console.log(JSON.stringify(response.data));
-              navigate('/AdminViewNurses')
+              navigate('/MedicalStaffViewNurses')
             //   window.location.reload()
             })
             .catch(function (error) {

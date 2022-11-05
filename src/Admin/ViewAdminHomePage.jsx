@@ -3,19 +3,19 @@ import { useNavigate } from 'react-router-dom';
 function ViewAdminHomePage() {
     const navigate = useNavigate()
     const handleDoctors=()=>{
-        navigate('/AdminViewDoctors')
+        navigate('/MedicalStaffViewDoctors')
     }
     const handlePatients=()=>{
         
     }
     const handleNurses=()=>{
-      navigate('/AdminViewNurses')
+      navigate('/MedicalStaffViewNurses')
     }
     return ( 
         <div>
         <div className="container">
           <div className="w-75 mx-auto shadow p-5">
-            <h2 className="text-center mb-4">Admin Action</h2>
+            <h2 className="text-center mb-4">Medical staff Action</h2>
               <span>              
                 <button className="btn btn-primary btn-block" onClick = {() => handleDoctors()}>Doctors</button>
                 <button className="btn btn-primary btn-block" onClick = {() => handleNurses()}>Nurses</button>

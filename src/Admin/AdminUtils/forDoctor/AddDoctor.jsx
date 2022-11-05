@@ -49,7 +49,7 @@ function AddDoctor() {
     }
 
     const handleBack= () => {
-      navigate('/AdminViewDoctors')
+      navigate('/MedicalStaffViewDoctors')
     }
 
 

@@ -42,14 +42,13 @@ function AddNurse() {
         })
         .catch(function (error) {
           console.log(error);
-          alert('Something went wrong, please check your input.' + 
-          '\nThe author may already have this song with this genre')
+          alert('Something went wrong, please check your input.')
         console.log('Something went wrong, please check your input')    
         });
     }
 
     const handleBack= () => {
-      navigate('/AdminViewNurses')
+      navigate('/MedicalStaffViewNurses')
     }
 
 
@@ -64,7 +63,7 @@ function AddNurse() {
                   type="text"
                   name="username"
                   className="form-control form-control-lg"
-                  placeholder="Enter Doctor Username"
+                  placeholder="Enter Nurse Username"
                   value={username}
                   onChange={e => {setUsername(e.target.value)}}
                 />
@@ -75,7 +74,7 @@ function AddNurse() {
                   className="form-control form-control-lg"
                   name="email"
                   value={email}
-                  placeholder="Enter Doctor Email"
+                  placeholder="Enter Nurse Email"
                   onChange={
                     e => 
                     {setEmail(e.target.value)}}
@@ -85,7 +84,7 @@ function AddNurse() {
                 <input
                   type="password"
                   className="form-control form-control-lg"
-                  placeholder="Enter Doctor Password"
+                  placeholder="Enter Nurse Password"
                   name="password"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
@@ -95,7 +94,7 @@ function AddNurse() {
                 <input
                   type="text"
                   className="form-control form-control-lg"
-                  placeholder="Enter Doctor Phone"
+                  placeholder="Enter Nurse Phone"
                   name="phone"
                   value={phone}
                   onChange={e => setPhone(e.target.value)}
@@ -105,7 +104,7 @@ function AddNurse() {
                 <input
                   type="text"
                   className="form-control form-control-lg"
-                  placeholder="Enter Doctor Name"
+                  placeholder="Enter Nurse Name"
                   name="name"
                   value={name}
                   onChange={e => setName(e.target.value)}

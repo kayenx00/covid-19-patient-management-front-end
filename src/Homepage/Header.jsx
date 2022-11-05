@@ -30,8 +30,8 @@ function Header(params) {
             <Link to = "/about">About</Link>
             <Link to  = {`/Patient/${user_id}`}> Patient </Link>
             <Link to  = {`/Doctor/${user_id}`}> Doctor </Link>
-            <Link to  = {`/Admin/`}> Nurse </Link>
-            <Link to  = {`/Admin/`}> Admin </Link>
+            <Link to  = {`/Nurse/${user_id}`}> Nurse </Link>
+            <Link to  = {`/MedicalStaff/`}> Medical staff </Link>
             {/* <Link to = "/about">Home</Link> */}
             </nav>
 

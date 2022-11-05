@@ -35,7 +35,7 @@ function Search({details, doctor_id}) {
         setSearchField(e.target.value);
     }
     const handleBack = () => {
-        navigate('/AdminViewDoctors')
+        navigate('/MedicalStaffViewDoctors')
     }
     function searchList() {
       if(nurses.length === 0){

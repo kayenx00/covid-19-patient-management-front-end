@@ -26,13 +26,13 @@ function List({filteredNurse}) {
         })
     }
     const handleBack = () =>{
-        navigate('/Admin')
+        navigate('/MedicalStaff')
     }
     const AddNurse = () =>{
-        navigate('/AdminAddNurse')
+        navigate('/MedicalStaffAddNurse')
     }
     const handleUpdate = (id) => {
-        navigate("/AdminUpdateNurse/" + id)
+        navigate("/MedicalStaffUpdateNurse/" + id)
     } 
     function goToNextPage() {
 

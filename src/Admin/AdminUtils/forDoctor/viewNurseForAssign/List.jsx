@@ -28,7 +28,7 @@ function List({filteredNurse, doctor}) {
         })
     }
     const handleBack = () =>{
-        navigate('/AdminViewDoctors')
+        navigate('/MedicalStaffViewDoctors')
     }
     function goToNextPage() {
 

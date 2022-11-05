@@ -50,7 +50,7 @@ await axios(config)
   }
   else if(roles === "ROLE_ADMIN"){
     params.setIsAdmin(true);
-    navigate('/Admin')
+    navigate('/MedicalStaff')
   }
   else if(roles === "ROLE_DOCTOR"){
     params.setIsDoctor(true);

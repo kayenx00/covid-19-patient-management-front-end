@@ -47,6 +47,7 @@ import AddHealthDeclaration from './Patient/AddHealthDeclaration';
 import FetchInitiatedAppointment from './Patient/PatientAppointments/ViewInitiatedAppointment/Fetch';
 import FetchUpcomingAppointmentsForPatient from './Patient/PatientAppointments/ViewUpcomingAppointment/Fetch';
 import RequestAppointment from './Patient/PatientAppointments/RequestAppointment';
+import SymptomsQuestion from './Patient/symptomPrediction/SymptomQuestions';
 function App() {
   const token = localStorage.getItem('token')
   const user_id = localStorage.getItem('token')
@@ -101,18 +102,19 @@ function App() {
                                                   setIsPatient = {setIsPatient}
                                                   setIsNurse = {setIsNurse}/>}/>
           <Route exact path = "/register" element = {<Register setIsLoggedin = {setIsLoggedin}/>}/>
+          <Route exact path = "/PredictPatientSymptoms" element = {<SymptomsQuestion/>} />
           <Route element = {<ProtectedRoutes isLoggedin={isLoggedin}/>}>
             {/* Admin */}
-            <Route exact path = "/Admin" element = {<ViewAdminHomePage />}/>
-            <Route exact path = "/AdminViewDoctors" element = {<FetchDoctor/>} /> 
-            <Route exact path = "/AdminviewPatients" element = {<FetchPatient/>} />
-            <Route exact path = "/AdminUpdateDoctor/:id" element = {<UpdateDoctor/>} />
-            <Route exact path = "/AdminAddDoctor" element = {<AddDoctor/>} />
-            <Route exact path = "/AdminViewDoctorNurses/:id" element = {<FetchNurseOfDoctor/>} />
-            <Route exact path = "/AdminViewNurses" element = {<FetchNurse/>} />
-            <Route exact path = "/AdminUpdateNurse/:id" element = {<UpdateNurse/>} />
-            <Route exact path = "/AdminAddNurse" element = {<AddNurse/>} />
-            <Route exact path = "/AdminViewNursesForAssignment/:id" element = {<FetchNursesForAssign/>} />
+            <Route exact path = "/MedicalStaff" element = {<ViewAdminHomePage />}/>
+            <Route exact path = "/MedicalStaffViewDoctors" element = {<FetchDoctor/>} /> 
+            <Route exact path = "/MedicalStaffviewPatients" element = {<FetchPatient/>} />
+            <Route exact path = "/MedicalStaffUpdateDoctor/:id" element = {<UpdateDoctor/>} />
+            <Route exact path = "/MedicalStaffAddDoctor" element = {<AddDoctor/>} />
+            <Route exact path = "/MedicalStaffViewDoctorNurses/:id" element = {<FetchNurseOfDoctor/>} />
+            <Route exact path = "/MedicalStaffViewNurses" element = {<FetchNurse/>} />
+            <Route exact path = "/MedicalStaffUpdateNurse/:id" element = {<UpdateNurse/>} />
+            <Route exact path = "/MedicalStaffAddNurse" element = {<AddNurse/>} />
+            <Route exact path = "/MedicalStaffViewNursesForAssignment/:id" element = {<FetchNursesForAssign/>} />
             {/* Doctor */}
             <Route exact path = "/Doctor/:id" element = {<ViewDoctorHomePage />}/>
             <Route exact path = "/DoctorViewPatients/:id" element = {<FetchPatientUnderGuide/>} /> 

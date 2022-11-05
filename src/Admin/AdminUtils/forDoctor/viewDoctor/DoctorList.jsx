@@ -22,13 +22,13 @@ function DoctorList({filteredDoctor}) {
     //     })
     // }
     const handleBack = () =>{
-        navigate('/Admin')
+        navigate('/MedicalStaff')
     }
     const AddDoctor = () =>{
-        navigate('/AdminAddDoctor')
+        navigate('/MedicalStaffAddDoctor')
     }
     const handleUpdate = (id) => {
-        navigate("/AdminUpdateDoctor/" + id)
+        navigate("/MedicalStaffUpdateDoctor/" + id)
     } 
     function goToNextPage() {
 
@@ -70,10 +70,10 @@ function DoctorList({filteredDoctor}) {
     }
 
     const handleView = (id) =>{
-        navigate('/AdminViewDoctorNurses/'+id)
+        navigate('/MedicalStaffViewDoctorNurses/'+id)
     }
     const handleAssign = (id) => {
-        navigate('/AdminViewNursesForAssignment/'+id)
+        navigate('/MedicalStaffViewNursesForAssignment/'+id)
     }
     return (
         <div>

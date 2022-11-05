@@ -9,7 +9,7 @@ function UpdateDoctor() {
     let navigate = useNavigate()
     console.log(id)
     const handleBack = () => {
-        navigate('/AdminViewDoctors')
+        navigate('/MedicalStaffViewDoctors')
     }
     const onSubmit = async () => {
             const s = API + 'updateDoctor'

@@ -28,6 +28,10 @@ let navigate = useNavigate()
         localStorage.setItem('patient_id', id)
         navigate("/DoctorViewPatientDeclaration/" + id)
     } 
+    const handleViewTreatment = (id)=> {
+        localStorage.setItem('patient_id', id)
+        navigate("/DoctorViewPatientTreatment/" + id)
+    }
     function goToNextPage() {
 
         setCurrentPage((page) => page + 1);
@@ -97,6 +101,8 @@ let navigate = useNavigate()
                                     <td>{f.district}</td>
                                     <td>
                                         <button onClick = {() => handleView(f.id)}>View Patient Declaration</button>
+                                        <br />
+                                        <button onClick = {() => handleViewTreatment(f.id)}>View Patient Treatment Duration</button>
                                     </td>
 
                                 </tr>

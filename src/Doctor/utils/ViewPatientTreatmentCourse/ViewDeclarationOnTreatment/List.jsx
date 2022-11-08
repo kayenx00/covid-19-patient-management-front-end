@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 const moment = require('moment');
-function HealthDeclarationOfPatient({healthDeclaration}) {
+function List({healthDeclaration}) {
     const list = healthDeclaration
     const navigate = useNavigate();
     console.log(list);
     const handleBack = () =>{
-        const doctor_id = localStorage.getItem('doctor_id')
-        navigate('/DoctorViewPatients/'+doctor_id)
+        const patient_id = localStorage.getItem('patient_id')
+        navigate('/DoctorViewPatientTreatment/'+patient_id)
     }
     const handleClick=(id)=>{
         navigate('/DoctorAddAdvice/'+ id)
@@ -28,6 +28,7 @@ function HealthDeclarationOfPatient({healthDeclaration}) {
                             <th>Other_Diagnose </th>
                             <th>Last update </th>
                             <th>Advice to yout Patient</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,6 +43,10 @@ function HealthDeclarationOfPatient({healthDeclaration}) {
                                 <td>{l.other_diagnose}</td>
                                 <td>{moment(l.last_update.lastUpdate).format("YYYY-MM-DD")}</td>
                                 <td>{l.advice}</td>
+                                <td>
+                                    <button onClick = {() => handleClick(l.id)}>Add Advice</button>
+                                </td>
+                            
                             </tr>)}
                             <tr>
                         <td>
@@ -57,4 +62,4 @@ function HealthDeclarationOfPatient({healthDeclaration}) {
      );
 }
 
-export default HealthDeclarationOfPatient;
+export default List;

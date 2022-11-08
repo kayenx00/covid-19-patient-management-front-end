@@ -8,8 +8,8 @@ function MakeAdvice() {
     let navigate = useNavigate()
     console.log(id)
     const handleBack = () => {
-        const patient_id = localStorage.getItem('patient_id')
-        navigate('/DoctorViewPatientDeclaration/'+ patient_id)
+        const course_id = localStorage.getItem('course_id')
+        navigate('/ViewDeclarationOnTreatCourse/'+ course_id)
     }
     const onSubmit = async () => {
             const s = API + 'updateAdvice'

@@ -25,13 +25,14 @@ import FetchNursesForAssign from './Admin/AdminUtils/forDoctor/viewNurseForAssig
 import AddNurse from './Admin/AdminUtils/forNurse/AddNurse';
 //Doctor
 import FetchPatientUnderGuide from './Doctor/utils/viewPatientUnderGuide/FetchPatientUnderGuide';
-
 import MakeAdvice from './Doctor/utils/MakeAdvice';
 import ViewDoctorHomePage from './Doctor/utils/ViewDoctorHomePage';
 import ViewOnePatientDeclaration from './Doctor/utils/ViewOnePatientDeclaration';
 import FetchRequestAppointment from './Doctor/utils/appointments/ViewRequestAppointments/Fetch';
 import FetchUpcomingAppointmentsForDoctor from './Doctor/utils/appointments/ViewUpcommingAppointments/Fetch';
 import InitiateAppointment from './Doctor/utils/appointments/InitiateAnAppointment';
+import ViewPatientTreatmentCourse from './Doctor/utils/ViewPatientTreatmentCourse/Fetch';
+import ViewPatientDeclarations from './Doctor/utils/ViewPatientTreatmentCourse/ViewDeclarationOnTreatment/Fetch';
 //Nurse
 import ViewNurseHomePage from './Nurse/Homepage/FetchNurseInfo';
 import FetchPatientForNurse from './Nurse/ViewPatient/Fetch';
@@ -123,7 +124,9 @@ function App() {
             <Route exact path = "/DoctorViewRequestAppointment" element = {<FetchRequestAppointment/>} />
             <Route exact path = "/DoctorViewUpcomingAppointment" element = {<FetchUpcomingAppointmentsForDoctor/>} />
             <Route exact path = "/DoctorInitiateAppointment" element = {<InitiateAppointment/>} />
-            <Route exact path = "/DoctorViewNurses" element = {<InitiateAppointment/>} />
+            {/* <Route exact path = "/DoctorViewNurses" element = {<InitiateAppointment/>} /> */}
+            <Route exact path = "/DoctorViewPatientTreatment/:id" element = {<ViewPatientTreatmentCourse/>} />
+            <Route exact path = "/ViewDeclarationOnTreatCourse/:id" element = {<ViewPatientDeclarations/>} />
             {/* Nurse */}
             <Route exact path = "/Nurse/:id" element = {<ViewNurseHomePage />}/>
             <Route exact path = "/NurseViewPatients/:id" element = {<FetchPatientForNurse />}/>

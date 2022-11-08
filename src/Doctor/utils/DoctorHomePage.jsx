@@ -64,9 +64,9 @@ function DoctorHomePage({doctorDetails}) {
                                 <button onClick={handleClick}>View Patients</button>
                             </td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                             <button onClick={handleView}>View Nurses</button>
-                        </tr>
+                        </tr> */}
                     </thead>
                 </table>
             </div>

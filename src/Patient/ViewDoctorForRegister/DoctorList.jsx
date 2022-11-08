@@ -12,15 +12,15 @@ function DoctorList({filteredDoctors}) {
     const [pages] = useState(Math.floor(numberOfDoctors / dataLimit));
     const [currentPage, setCurrentPage] = useState(1);
     const handleBack=()=>{
-        const doctor_id = localStorage.getItem('user_id')
-        navigate('/Doctor/'+ doctor_id)
+        const user_id = localStorage.getItem('user_id')
+        navigate('/Patient/'+ user_id)
     }
     const handleRegister = async (id) => {
         const formData = new FormData()
         const token = localStorage.getItem('token')
         const patient_id = localStorage.getItem('patient_id')
         const user_id = localStorage.getItem('user_id')
-        const s = API + "registerDoctor";
+        const s = API + "newRegisterDoctor";
         console.log(id)
         console.log(patient_id)
         formData.append('chosen_doctor', id);

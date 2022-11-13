@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import { Link, Outlet } from 'react-router-dom';
+import Dropdown from 'react-bootstrap/Dropdown';
 function Header(params) {
     const user_id = localStorage.getItem('user_id')
     const setLoginOrLogout = () => {
@@ -33,7 +34,19 @@ function Header(params) {
             <Link to  = {`/Nurse/${user_id}`}> Nurse </Link>
             <Link to  = {`/MedicalStaff/`}> Medical staff </Link>
             {/* <Link to = "/about">Home</Link> */}
+            {/* <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    Dropdown Button
+                </Dropdown.Toggle>  
+
+                <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                    <Dropdown.Item href={`/Nurse/${user_id}`}>Something else</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown> */}
             </nav>
+ 
 
 {/* Navbar */}
 {/*

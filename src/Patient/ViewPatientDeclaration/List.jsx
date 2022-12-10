@@ -18,7 +18,7 @@ function List({details}) {
            <table className = "table table-striped table-bordered">
             <thead>
                 <tr>
-                    <td>ID</td>
+                    {/* <td>ID</td> */}
                     <td>Blood Pressure</td>
                     <td>Oxygen Level</td>
                     <td>Fever</td>
@@ -27,20 +27,25 @@ function List({details}) {
                     <td>Other Diagnose</td>
                     <td>Last Update</td>
                     <td>Advice from your Doctor</td>
+                    <td>Advice from the Nurse</td>
+                    <td>Measured_by</td>
+
                 </tr>
             </thead>
             <tbody>
                 {list.map(l =>
                     <tr key = {l.id}>
-                        <td>{l.id}</td>
                         <td>{l.blood_pressure}</td>
                         <td>{l.oxygen_level}</td>
                         <td>{l.fever}</td>
                         <td>{l.headache}</td>
                         <td>{l.muscleache}</td>
                         <td>{l.other_diagnose}</td>
-                        <td>{moment(l.last_update.lastUpdate).format("YYYY-MM-DD")}</td>
+                        <td>{moment(l.last_update).format("YYYY-MM-DD")}</td>
                         <td>{l.advice}</td>
+                        <td>{l.comment_from_nurse}</td>
+                        <td>{l.measured_by}</td>
+
                         {/* <td>
                             <button onClick = {()=> handleUpdate(l.id)}>
                                 Update

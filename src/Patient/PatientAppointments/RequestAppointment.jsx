@@ -57,7 +57,7 @@ function RequestAppointment() {
     <div>
         <div className="container">
           <div className="w-75 mx-auto shadow p-5">
-            <h2 className="text-center mb-4">Add Health Declaration</h2>
+            <h2 className="text-center mb-4">Request an Appointment</h2>
             <form onSubmit={(e) => onSubmit(e)}>
               <div className="form-group">
                 Appointment Date:

@@ -86,7 +86,7 @@ function DoctorList({filteredDoctors}) {
                 <table className = "table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            {/* <th>ID</th> */}
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Email</th>
@@ -97,7 +97,7 @@ function DoctorList({filteredDoctors}) {
                             getPaginatedData().map(f =>
                             
                                 <tr key ={f.id}>
-                                    <td>{f.id}</td>
+                                    {/* <td>{f.id}</td> */}
                                     <td>{f.name}</td>
                                     <td>{f.phone}</td>
                                     <td>{f.email}</td>

@@ -19,7 +19,6 @@ function HealthDeclarationOfPatient({healthDeclaration}) {
                 <table className = "table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>ID </th>
                             <th>Blood_Pressure </th>
                             <th>Oxygen_Level </th>
                             <th>Fever</th>
@@ -27,21 +26,24 @@ function HealthDeclarationOfPatient({healthDeclaration}) {
                             <th>Muscle Pain</th>
                             <th>Other_Diagnose </th>
                             <th>Last update </th>
-                            <th>Advice to yout Patient</th>
+                            <th>Advice to your Patient</th>
+                            <th>Nurse's comment</th>
+                            <th>Measured by</th>
                         </tr>
                     </thead>
                     <tbody>
                         {list.map(l => 
                             <tr key = {l.id}>
-                                <td>{l.id}</td>
                                 <td>{l.blood_pressure}</td>
                                 <td>{l.oxygen_level}</td>
                                 <td>{l.fever}</td>
                                 <td>{l.headache}</td>
                                 <td>{l.muscleache}</td>
                                 <td>{l.other_diagnose}</td>
-                                <td>{moment(l.last_update.lastUpdate).format("YYYY-MM-DD")}</td>
+                                <td>{moment(l.last_update).format("YYYY-MM-DD")}</td>
                                 <td>{l.advice}</td>
+                                <td>{l.comment_from_nurse}</td>
+                                <td>{l.measured_by}</td>
                             </tr>)}
                             <tr>
                         <td>

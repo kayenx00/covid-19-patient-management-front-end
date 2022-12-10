@@ -22,6 +22,7 @@ function List({details}) {
                <table className = "table table-striped table-bordered">
                 <thead>
                     <tr>
+                        <td>ID</td>
                         <td>Name</td>
                         <td>Email</td>
                         <td>Phone</td>
@@ -32,8 +33,9 @@ function List({details}) {
                 <tbody>
                     {list.map(l =>
                         <tr key = {l.id}>
+                            <td>{l.id}</td>
                             <td>{l.name}</td>
-                            <td></td>
+                            <td>{l.email}</td>
                             <td>{l.phone}</td>
                             <td>{l.user_id}</td>
                             <td>{l.username}</td>

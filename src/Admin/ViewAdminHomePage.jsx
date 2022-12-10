@@ -5,9 +5,9 @@ function ViewAdminHomePage() {
     const handleDoctors=()=>{
         navigate('/MedicalStaffViewDoctors')
     }
-    const handlePatients=()=>{
+    // const handlePatients=()=>{
         
-    }
+    // }
     const handleNurses=()=>{
       navigate('/MedicalStaffViewNurses')
     }
@@ -19,7 +19,7 @@ function ViewAdminHomePage() {
               <span>              
                 <button className="btn btn-primary btn-block" onClick = {() => handleDoctors()}>Doctors</button>
                 <button className="btn btn-primary btn-block" onClick = {() => handleNurses()}>Nurses</button>
-                <button className="btn btn-primary btn-block" onClick = {() => handlePatients()}>Patients</button>
+                {/* <button className="btn btn-primary btn-block" onClick = {() => handlePatients()}>Patients</button> */}
               </span>
           </div>
         </div>

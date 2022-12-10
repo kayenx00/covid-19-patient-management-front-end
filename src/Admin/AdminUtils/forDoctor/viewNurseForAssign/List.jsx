@@ -105,6 +105,7 @@ function List({filteredNurse, doctor}) {
                     <thead>
                         <tr>
                             <th></th>
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Phone</th>
                             <th>User_ID</th>
@@ -122,6 +123,7 @@ function List({filteredNurse, doctor}) {
                                         checked = {checked.includes(f.id)} 
                                         onChange = {() => handleCheckBox(f.id)}/>
                                     </td>
+                                    <td>{f.id}</td>
                                     <td>{f.name}</td>
                                     <td>{f.phone}</td>
                                     <td>{f.user_id}</td>

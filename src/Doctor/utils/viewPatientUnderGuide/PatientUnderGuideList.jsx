@@ -75,7 +75,7 @@ let navigate = useNavigate()
                 <table className = "table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            {/* <th>ID</th> */}
                             <th>Name</th>
                             <th>ID Number</th>
                             <th>Phone</th>
@@ -93,7 +93,7 @@ let navigate = useNavigate()
                                         checked = {checked.includes(f.id)} 
                                         onChange = {() => handleCheckBox(f.id)}/>
                                     </td> */}
-                                    <td>{f.id}</td>
+                                    {/* <td>{f.id}</td> */}
                                     <td>{f.name}</td>
                                     <td>{f.id_num}</td>
                                     <td>{f.phone}</td>

@@ -63,7 +63,7 @@ function List({details}) {
                 <thead>
                     <tr>
                         {/* <td></td> */}
-                        <td>ID</td>
+                        {/* <td>ID</td> */}
                         <td>Date</td>
                         <td>Start time</td>
                         <td>Duration (in minute)</td>
@@ -80,7 +80,7 @@ function List({details}) {
                                             checked = {checked.includes(l.id)} 
                                             onChange = {() => handleCheckBox(l.id)}/>
                             </td> */}
-                            <td>{l.id}</td>
+                            {/* <td>{l.id}</td> */}
                             <td>{moment(l.date).format("YYYY-MM-DD")}</td>
                             <td>{l.start_time}</td>
                             <td>{l.duration}</td>

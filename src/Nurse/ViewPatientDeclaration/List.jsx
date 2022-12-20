@@ -21,7 +21,7 @@ function List({healthDeclaration, patient_id}) {
                 <table className = "table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>ID </th>
+                            {/* <th>ID </th> */}
                             <th>Blood_Pressure</th>
                             <th>Oxygen_Level</th>
                             <th>Fever</th>
@@ -37,7 +37,7 @@ function List({healthDeclaration, patient_id}) {
                     <tbody>
                         {list.map(l => 
                             <tr key = {l.id}>
-                                <td>{l.id}</td>
+                                {/* <td>{l.id}</td> */}
                                 <td>{l.blood_pressure}</td>
                                 <td>{l.oxygen_level}</td>
                                 <td>{l.fever}</td>

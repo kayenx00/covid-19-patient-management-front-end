@@ -114,6 +114,7 @@ function List({filteredNurse}) {
                             <th>ID</th>
                             <th>Name</th>
                             <th>Phone</th>
+                            <th>Work place</th>
                             <th>User_ID</th>
                             <th>Username</th>
                             <th>Work Under Doctor</th>
@@ -132,6 +133,7 @@ function List({filteredNurse}) {
                                     <td>{f.id}</td>
                                     <td>{f.name}</td>
                                     <td>{f.phone}</td>
+                                    <td>{f.work_place}</td>
                                     <td>{f.user_id}</td>
                                     <td>{f.username}</td>
                                     <td>{f.work_under_doctor}</td>

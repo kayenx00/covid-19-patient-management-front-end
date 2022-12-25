@@ -67,9 +67,9 @@ function MakeAdvice() {
                   onChange={e => setAdvice(e.target.value)}>
                 </textarea>
               </div>
-              <span>              
+              <span>       
+                <button className="btn btn-primary btn-block" onClick = {() => handleBack()}>Back</button>       
                 <button type = "submit" className="btn btn-primary btn-block">Make Advice</button>
-                <button className="btn btn-primary btn-block" onClick = {() => handleBack()}>Back</button>
               </span>
             </form>
           </div>

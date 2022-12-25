@@ -6,7 +6,7 @@ function PatientHomePage({patientDetails}) {
     const details = patientDetails;
     const navigate = useNavigate()
     console.log(details);
-    const {id, name, id_num, phone, city, district, user_id, username, chosen_doctor} = details
+    const {id, name, id_num, phone, city, district, user_id, username, chosen_doctor, doctorWorkPlace} = details
     // localStorage.setItem('doctor_id', chosen_doctor);
     localStorage.setItem('patient_id', id);
     const handleClick = () => {
@@ -70,8 +70,9 @@ function PatientHomePage({patientDetails}) {
                             <td>{username}</td>
                         </tr>
                         <tr>
-                            <td>Chosen Doctor ID: </td>
-                            <td>{chosen_doctor}</td>
+                            <td>Chosen Doctor/Their Work Plave: </td>
+                            <td>{chosen_doctor}/<br/>
+                            {doctorWorkPlace}</td>
                         </tr>
                         {/* <tr>
                             <td>

@@ -9,6 +9,7 @@ function AddNurse() {
     const [password, setPassword] = useState("")
     const [phone, setPhone] = useState("")
     const [name, setName] = useState("")
+    const [work_place, setWork_place] = useState("")
     const token = localStorage.getItem('token')
     const onSubmit = async () => {
         let s = API + 'addNurse'
@@ -17,7 +18,8 @@ function AddNurse() {
             "email": email,
             "password": password,
             "phone": phone,
-            "name": name
+            "name": name, 
+            "work_place": work_place
           });
         // const formData = new FormData();
         // formData.append("username", username)
@@ -108,6 +110,16 @@ function AddNurse() {
                   name="name"
                   value={name}
                   onChange={e => setName(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control form-control-lg"
+                  placeholder="Enter Nurse Work Place"
+                  name="work_place"
+                  value={work_place}
+                  onChange={e => setWork_place(e.target.value)}
                 />
               </div>
               <span>              

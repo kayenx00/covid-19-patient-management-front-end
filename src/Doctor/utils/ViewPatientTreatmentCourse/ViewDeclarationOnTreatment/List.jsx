@@ -41,7 +41,7 @@ function List({healthDeclaration}) {
                                 <td>{l.headache}</td>
                                 <td>{l.muscleache}</td>
                                 <td>{l.other_diagnose}</td>
-                                <td>{moment(l.last_update.lastUpdate).format("YYYY-MM-DD")}</td>
+                                <td>{moment(l.last_update).format("YYYY-MM-DD")}</td>
                                 <td>{l.advice}</td>
                                 <td>
                                     <button onClick = {() => handleClick(l.id)}>Add Advice</button>

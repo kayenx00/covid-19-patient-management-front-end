@@ -4,7 +4,7 @@ function NurseHomePage({nurseDetails}) {
     const details = nurseDetails;
     const navigate = useNavigate()
     console.log(details);
-    const {id, name, phone, email, user_id, username, work_under_doctor} = details
+    const {id, name, phone, email, work_place, user_id, username, work_under_doctor} = details
     localStorage.setItem('nurse_id', id)
     const handleClick = () => {
         localStorage.setItem('nurse_id', id)
@@ -40,6 +40,10 @@ function NurseHomePage({nurseDetails}) {
                         <tr>
                             <td>Phone: </td>
                             <td>{phone}</td>
+                        </tr>
+                        <tr>
+                            <td>Work Place:</td>
+                            <td>{work_place}</td>
                         </tr>
                         <tr>
                             <td>User ID: </td>

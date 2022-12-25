@@ -16,6 +16,11 @@ function SearchDoctor({details}) {
             .phone
             .toLowerCase()
             .includes(searchField.toLowerCase())
+            ||
+            doctor
+            .phone
+            .toLowerCase()
+            .includes(searchField.toLowerCase())
           );
         }
       );

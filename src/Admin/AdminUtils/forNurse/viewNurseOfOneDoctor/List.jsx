@@ -26,6 +26,7 @@ function List({details}) {
                         <td>Name</td>
                         <td>Email</td>
                         <td>Phone</td>
+                        <td>Work place</td>
                         <td>User ID</td>
                         <td>Username</td>
                     </tr>
@@ -37,6 +38,7 @@ function List({details}) {
                             <td>{l.name}</td>
                             <td>{l.email}</td>
                             <td>{l.phone}</td>
+                            <td>{l.work_place}</td>
                             <td>{l.user_id}</td>
                             <td>{l.username}</td>
                             {/* <td><button onClick={e => handleCancel(l.id)}>Cancel Appointment</button></td> */}

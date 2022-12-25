@@ -90,6 +90,7 @@ function DoctorList({filteredDoctors}) {
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Email</th>
+                            <th>Work place</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -101,6 +102,7 @@ function DoctorList({filteredDoctors}) {
                                     <td>{f.name}</td>
                                     <td>{f.phone}</td>
                                     <td>{f.email}</td>
+                                    <td>{f.work_place}</td>
                                     <td>
                                         <button onClick = {() => handleRegister(f.id)}>Register</button>
                                     </td>

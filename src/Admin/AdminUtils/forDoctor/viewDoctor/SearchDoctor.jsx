@@ -20,6 +20,11 @@ function SearchDoctor({details}) {
             .username
             .toLowerCase()
             .includes(searchField.toLowerCase())
+            ||
+            doctor
+            .work_place
+            .toLowerCase()
+            .includes(searchField.toLowerCase())
           );
         }
       );

@@ -90,6 +90,7 @@ function DoctorList({filteredDoctor}) {
                             <th>ID</th>
                             <th>Name</th>
                             <th>Phone</th>
+                            <th>Work place</th>
                             <th>User_ID</th>
                             <th>Username</th>
                             <th>Action</th>
@@ -108,6 +109,7 @@ function DoctorList({filteredDoctor}) {
                                     <td>{f.id}</td>
                                     <td>{f.name}</td>
                                     <td>{f.phone}</td>
+                                    <td>{f.work_place}</td>
                                     <td>{f.user_id}</td>
                                     <td>{f.username}</td>
                                     <td>

@@ -5,6 +5,7 @@ import { API } from '../../../api/GeneralAPI';
 function UpdateNurse() {
     const [name, setName] = useState("")
     const [phone, setPhone] = useState("")
+    const [work_place, setWork_place] = useState("")
     const {id} = useParams()
     let navigate = useNavigate()
     console.log(id)
@@ -24,6 +25,7 @@ function UpdateNurse() {
             formData.append('id', id)
             formData.append('name', name)
             formData.append('phone', phone)
+            formData.append('work_place', work_place)
             const config = {
               method: 'put',
               url: s,
@@ -68,6 +70,16 @@ function UpdateNurse() {
                   name="phone"
                   value={phone}
                   onChange={e => setPhone(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control form-control-lg"
+                  placeholder="Enter Nurse Work Place"
+                  name="work_place"
+                  value={work_place}
+                  onChange={e => setWork_place(e.target.value)}
                 />
               </div>
               <span>       

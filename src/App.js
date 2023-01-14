@@ -49,6 +49,9 @@ import FetchInitiatedAppointment from './Patient/PatientAppointments/ViewInitiat
 import FetchUpcomingAppointmentsForPatient from './Patient/PatientAppointments/ViewUpcomingAppointment/Fetch';
 import RequestAppointment from './Patient/PatientAppointments/RequestAppointment';
 import SymptomsQuestion from './Patient/symptomPrediction/SymptomQuestions';
+// Guest
+import SearchPatient from './Guest/SearchPatient/SearchPatient';
+
 function App() {
   const token = localStorage.getItem('token')
   const user_id = localStorage.getItem('token')
@@ -104,6 +107,7 @@ function App() {
                                                   setIsNurse = {setIsNurse}/>}/>
           <Route exact path = "/register" element = {<Register setIsLoggedin = {setIsLoggedin}/>}/>
           <Route exact path = "/PredictPatientSymptoms" element = {<SymptomsQuestion/>} />
+          <Route exact path = "/SearchPatient" element = {<SearchPatient/>} />
           <Route element = {<ProtectedRoutes isLoggedin={isLoggedin}/>}>
             {/* Admin */}
             <Route exact path = "/MedicalStaff" element = {<ViewAdminHomePage />}/>

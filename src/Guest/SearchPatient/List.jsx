@@ -1,37 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-function PatientUnderGuideList({filteredPatients}) {
-    let navigate = useNavigate()
-    const filtered = filteredPatients
-    console.log(filtered)
+import moment from 'moment/moment';
+function List({details}) {
+    const patients = details
+    console.log(details)
     const [dataLimit, setDataLimit] = useState(12)
-    const numberOfPatients = filtered.length
+    const numberOfPatients = patients.length
     const pageLimit = Math.ceil(numberOfPatients/dataLimit)
-    const [checked, setChecked] = useState([])
+    // const [checked, setChecked] = useState([])
     const [pages] = useState(Math.floor(numberOfPatients / dataLimit));
     const [currentPage, setCurrentPage] = useState(1);
-    const handleCheckBox = (id) =>{
-        setChecked(prev => {
-            const isChecked = checked.includes(id);
-            if(isChecked){
-                return checked.filter(item => item !== id)
-            } else {
-                return [...prev, id]
-            }
-        })
-    }
-    const handleBack=()=>{
-        const doctor_id = localStorage.getItem('user_id')
-        navigate('/Doctor/'+ doctor_id)
-    }
-    const handleView = (id) => {
-        localStorage.setItem('patient_id', id)
-        navigate("/DoctorViewPatientDeclaration/" + id)
-    } 
-    const handleViewTreatment = (id)=> {
-        localStorage.setItem('patient_id', id)
-        navigate("/DoctorViewPatientTreatment/" + id)
-    }
+    // const handleCheckBox = (id) =>{
+    //     setChecked(prev => {
+    //         const isChecked = checked.includes(id);
+    //         if(isChecked){
+    //             return checked.filter(item => item !== id)
+    //         } else {
+    //             return [...prev, id]
+    //         }
+    //     })
+    // }
+    // const handleBack=()=>{
+    //     const doctor_id = localStorage.getItem('user_id')
+    //     navigate('/Doctor/'+ doctor_id)
+    // }
+    // const handleView = (id) => {
+    //     localStorage.setItem('patient_id', id)
+    //     navigate("/DoctorViewPatientDeclaration/" + id)
+    // } 
+    // const handleViewTreatment = (id)=> {
+    //     localStorage.setItem('patient_id', id)
+    //     navigate("/DoctorViewPatientTreatment/" + id)
+    // }
     function goToNextPage() {
 
         setCurrentPage((page) => page + 1);
@@ -54,7 +53,7 @@ function PatientUnderGuideList({filteredPatients}) {
      const getPaginatedData = () => {
         const startIndex = currentPage * dataLimit - dataLimit;
         const endIndex = startIndex + dataLimit;
-        return filtered.slice(startIndex, endIndex);
+        return patients.slice(startIndex, endIndex);
      };
    
      const getPaginationGroup = () => {
@@ -76,11 +75,12 @@ function PatientUnderGuideList({filteredPatients}) {
                     <thead>
                         <tr>
                             {/* <th>ID</th> */}
+                            <th>ID</th>
                             <th>Name</th>
                             <th>ID Number</th>
-                            <th>Phone</th>
-                            <th>City</th>
-                            <th>District</th>
+                            <th>Chosen Doctor</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -94,16 +94,17 @@ function PatientUnderGuideList({filteredPatients}) {
                                         onChange = {() => handleCheckBox(f.id)}/>
                                     </td> */}
                                     {/* <td>{f.id}</td> */}
+                                    <td>{f.patient_id}</td>
                                     <td>{f.name}</td>
                                     <td>{f.id_num}</td>
-                                    <td>{f.phone}</td>
-                                    <td>{f.city}</td>
-                                    <td>{f.district}</td>
-                                    <td>
+                                    <td>{f.chosenDoctor}</td>
+                                    <td>{moment(f.startDate).format("YYYY/MM/DD")}</td>
+                                    <td>{f.endDate === null ? "Until Now" : moment(f.end_date).format("YYYY/MM/DD")}</td>
+                                    {/* <td>
                                         <button onClick = {() => handleView(f.id)}>View Patient Declaration</button>
                                         <br />
                                         <button onClick = {() => handleViewTreatment(f.id)}>View Patient Treatment Duration</button>
-                                    </td>
+                                    </td> */}
 
                                 </tr>
                                 
@@ -151,11 +152,11 @@ function PatientUnderGuideList({filteredPatients}) {
                             </td>
                             <td></td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                             <td>
                                 <button onClick = {()=>handleBack()}>Back</button>
                             </td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
             </div>
@@ -163,4 +164,4 @@ function PatientUnderGuideList({filteredPatients}) {
     )
 }
 
-export default PatientUnderGuideList;
+export default List;

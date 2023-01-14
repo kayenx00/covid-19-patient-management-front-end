@@ -33,6 +33,7 @@ function Header(params) {
             <Link to  = {`/Doctor/${user_id}`}> Doctor </Link>
             <Link to  = {`/Nurse/${user_id}`}> Nurse </Link>
             <Link to  = {`/MedicalStaff/`}> Medical staff </Link>
+            <Link to  = {`/SearchPatient/`}> Search </Link>
             {/* <Link to = "/about">Home</Link> */}
             {/* <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">

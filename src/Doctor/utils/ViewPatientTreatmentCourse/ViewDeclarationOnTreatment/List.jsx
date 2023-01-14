@@ -27,7 +27,9 @@ function List({healthDeclaration}) {
                             <th>Muscle Pain</th>
                             <th>Other_Diagnose </th>
                             <th>Last update </th>
+                            <th>Nurse comment</th>
                             <th>Advice to yout Patient</th>
+                            <th>Measured by</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -42,7 +44,9 @@ function List({healthDeclaration}) {
                                 <td>{l.muscleache}</td>
                                 <td>{l.other_diagnose}</td>
                                 <td>{moment(l.last_update).format("YYYY-MM-DD")}</td>
+                                <td>{l.comment_from_nurse}</td>
                                 <td>{l.advice}</td>
+                                <td>{l.measured_by}</td>
                                 <td>
                                     <button onClick = {() => handleClick(l.id)}>Add Advice</button>
                                 </td>

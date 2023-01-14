@@ -13,29 +13,30 @@ function AddDoctor() {
     const token = localStorage.getItem('token')
     const onSubmit = async () => {
         let s = API + 'addDoctor'
-        let data = JSON.stringify({
-            "username": username,
-            "email": email,
-            "password": password,
-            "phone": phone,
-            "name": name,
-            "work_place": work_place
-          });
-        // const formData = new FormData();
-        // formData.append("username", username)
-        // formData.append("email", email)
-        // formData.append("password", password)
-        // formData.append("phone", phone)
-        // formData.append("name", name)
+        // let data = JSON.stringify({
+        //     "username": username,
+        //     "email": email,
+        //     "password": password,
+        //     "phone": phone,
+        //     "name": name,
+        //     "work_place": work_place
+        //   });
+        const formData = new FormData();
+        formData.append("username", username)
+        formData.append("email", email)
+        formData.append("password", password)
+        formData.append("phone", phone)
+        formData.append("name", name)
+        formData.append("work_place", work_place)
         const config = {
           method: 'post',
           url: s,
           headers: { 
-            'Content-Type': 'application/json',
+            // 'Content-Type': 'application/json',
              Authorization: `Bearer ${token}`
 
           },
-          data : data
+          data : formData
         };
         axios(config).then(function (response) {
             alert("Add successfully")
@@ -85,7 +86,7 @@ function AddDoctor() {
               </div>
               <div className="form-group">
                 <input
-                  type="password"
+                  type="text"
                   className="form-control form-control-lg"
                   placeholder="Enter Doctor Password"
                   name="password"

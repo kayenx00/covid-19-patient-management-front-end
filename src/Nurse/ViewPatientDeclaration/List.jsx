@@ -47,7 +47,7 @@ function List({healthDeclaration, patient_id}) {
                                 <td>{moment(l.last_update.lastUpdate).format("YYYY-MM-DD")}</td>
                                 <td>{l.advice}</td>                            
                                 <td>{l.measured_by}</td>                            
-                                <td>{l.comment}</td>                            
+                                <td>{l.comment_from_nurse}</td>                            
                             </tr>)}
                             <tr>
                         <td>

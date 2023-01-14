@@ -6,6 +6,7 @@ function Register(params) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
+    const [confirmedPassword, setConfirmedPassword] = useState("")
   //   const handleClick = async () => {
   //     const DateOfLastLogin = new Date();
   //     localStorage.setItem('token', "blaa")
@@ -16,30 +17,34 @@ function Register(params) {
     const  onSubmit = async (e) => {
       e.preventDefault()
       const axios = require('axios');
-      const data = JSON.stringify({
-        "username": username,
-        "email" : email,
-        "password": password
-          });
-  
-    const config = {
-      method: 'post',
-      url: 'http://localhost:8080/api/patientSignup',
-      headers: { 
-        'Content-Type': 'application/json', 
-      },
-      data : data
-    };
-  
-  await axios(config)
-  .then(function (response) {
-    const DateOfLastLogin = new Date();
-    alert('Register successfully ! Go to your email to activate your account')
-    navigate('/login')
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+      if(password === confirmedPassword) {
+        const data = JSON.stringify({
+          "username": username,
+          "email" : email,
+          "password": password
+        });
+        const config = {
+          method: 'post',
+          url: 'http://localhost:8080/api/patientSignup',
+          headers: { 
+            'Content-Type': 'application/json', 
+          },
+          data : data
+        };
+    
+        await axios(config)
+        .then(function (response) {
+        const DateOfLastLogin = new Date();
+        alert('Register successfully ! Go to your email to activate your account')
+        })
+        .catch(function (error) {
+        console.log(error);
+      });
+      }
+      else {
+        alert("The two password you enter are not the same")
+        window.location.reload()
+      }
   } 
     return ( 
           <div>
@@ -78,6 +83,16 @@ function Register(params) {
                     name="password"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
+                  />
+                </div>
+                <div className="form-item">
+                  <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Enter Password Again"
+                    name="confirmedPassword"
+                    value={confirmedPassword}
+                    onChange={e => setConfirmedPassword(e.target.value)}
                   />
                 </div>
                 <div className="form-item">

@@ -7,6 +7,7 @@ function PatientHomePage({patientDetails}) {
     const navigate = useNavigate()
     console.log(details);
     const {id, name, id_num, phone, city, district, user_id, username, chosen_doctor, doctorWorkPlace} = details
+    const checkIfUpdate = {name, id_num, phone, city, district}
     // localStorage.setItem('doctor_id', chosen_doctor);
     localStorage.setItem('patient_id', id);
     const handleClick = () => {
@@ -23,10 +24,12 @@ function PatientHomePage({patientDetails}) {
     }
     function RegisterOrUpdateAndView(){
         if(chosen_doctor !== null){
-            return <UpdateOrViewDeclaration patient_id = {id}/>
+            return <UpdateOrViewDeclaration patient_id = {id}
+                                            check = {checkIfUpdate}/>
         }
         else {
-            return <ViewAndRegisterButton patient_id={id}/>
+            return <ViewAndRegisterButton patient_id={id}
+                                          check = {checkIfUpdate}/>
         }
         
     }

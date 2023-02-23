@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { API } from '../../../api/GeneralAPI';
-function UpdateOrViewDeclaration({patient_id}) {
+function UpdateOrViewDeclaration({patient_id, check}) {
     const id = patient_id;
+    const {name, phone, id_num, city, district} = check;
     const navigate = useNavigate()
     const handleClick = () => {
         localStorage.setItem('patient_id', id)

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { API } from '../../../api/GeneralAPI';
 function UpdateOrViewDeclaration({patient_id, check}) {
     const id = patient_id;
-    const {name, phone, id_num, city, district} = check;
+    // const {name, phone, id_num, city, district} = check;
     const navigate = useNavigate()
     const handleClick = () => {
         localStorage.setItem('patient_id', id)
@@ -28,7 +28,7 @@ function UpdateOrViewDeclaration({patient_id, check}) {
         navigate('/PredictPatientSymptoms')
     }
     const handleEnd = async () => {
-        const s = API + 'endTreatmentCourse?id='
+        const s = API + 'endTreatmentCourseV2?id='
         const token = localStorage.getItem('token')
         const formData = new FormData()
         formData.append('id', id)

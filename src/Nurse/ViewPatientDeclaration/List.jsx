@@ -30,8 +30,8 @@ function List({healthDeclaration, patient_id}) {
                             <th>Other_Diagnose</th>
                             <th>Last update </th>
                             <th>Advice from Doctor</th>
-                            <th>Measure By</th>
                             <th>Comment to your Patient</th>
+                            <th>Measure By</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,8 +46,8 @@ function List({healthDeclaration, patient_id}) {
                                 <td>{l.other_diagnose}</td>
                                 <td>{moment(l.last_update.lastUpdate).format("YYYY-MM-DD")}</td>
                                 <td>{l.advice}</td>                            
-                                <td>{l.measured_by}</td>                            
                                 <td>{l.comment_from_nurse}</td>                            
+                                <td>{l.measured_by}</td>                            
                             </tr>)}
                             <tr>
                         <td>

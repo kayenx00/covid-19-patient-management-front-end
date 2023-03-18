@@ -14,7 +14,7 @@ function ViewPatientTreatmentCourse() {
         let formData = new FormData();
         formData.append('id', id);
         const fetchData = await axios({
-            method: 'get',
+            method: 'post',
             url: url,
             headers: {
                 Authorization: `Bearer ${token}`,

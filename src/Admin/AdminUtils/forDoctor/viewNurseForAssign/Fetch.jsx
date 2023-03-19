@@ -27,7 +27,7 @@ function FetchNursesForAssign() {
         ? <ReactLoading type="spin" color="#0000FF"
         height={100} width={50}/>
         : query.isError
-        ? <FetchingError roles = {"Admin"}/>
+        ? <FetchingError roles = {"Medical staff"}/>
         : query.data
         ? <div>
             <Search details = {query.data.data.object} 

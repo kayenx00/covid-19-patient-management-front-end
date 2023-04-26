@@ -3,7 +3,7 @@
 
 What you need to have: 
 - Visual Studio Code.
-- Ensure your computer having NodeJS.
+- Ensure your computer has NodeJS.
 
 Installment: 
 - You need to launch the back-end first by following this instruction: https://github.com/kayenx00/Thesis/blob/master/README.md 

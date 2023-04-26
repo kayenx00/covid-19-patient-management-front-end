@@ -4,9 +4,11 @@
 What you need to have: 
 - Visual Studio Code.
 - Ensure your computer NodeJS.
+
 Installment: 
 - You need to launch the back-end first by following this instruction: https://github.com/kayenx00/Thesis/blob/master/README.md 
 - Go to this link to install the website’s front-end: https://github.com/kayenx00/covid-19-patient-management-front-end  
+
 Launching: 
 - Now open your front-end folder with your Visual Studio Code. (File -> Open Folder).
 - After opening the folder, open the Terminal tab (Terminal -> New Terminal).

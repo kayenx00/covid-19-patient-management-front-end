@@ -49,6 +49,3 @@ Launching:
 - After waiting for the initiating, enter the next script `npm start` to launch the front-end.
  
 - After waiting for the front-end to start, Visual Studio Code will redirect you to the Website’s homepage. Now you successfully launch the websites. 
-
-
-![image](https://user-images.githubusercontent.com/53591019/234648964-d824dfe5-ea7d-462c-ab31-6356eda94ae9.png)
